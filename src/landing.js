@@ -21,7 +21,16 @@ const startTheGameBtn = document.getElementById("startTheGameBtn");
 isFirst = sessionStorage.getItem("IsFirstWindow");
 
 
+
+
+
+
 startTheGameBtn.addEventListener("click", (event) => {
+
+
+    // اگه کابر فقط از اورلی خارج شد باید یه پیام ارسال بشه و لندینگ رو دوباره باز کنه
+    // و اگه خواست دوباره بتونه اورلی رو باز کنه
+
     if (isFirst === true || isFirst === null) {
         isFirst = sessionStorage.setItem("IsFirstWindow", "false")
         // create new window here
@@ -37,6 +46,9 @@ startTheGameBtn.addEventListener("click", (event) => {
             width: screen.availWidth,
             height: screen.availHeight,
             resizable: false,
+            webPreferences: {
+                nodeIntegration: true,
+            }
         });
 
         isFirstWindow = true;
@@ -56,6 +68,8 @@ startTheGameBtn.addEventListener("click", (event) => {
             protocol: "file:",
             slashes: true,
         }))
+
+        overlayWindow.Web
 
         // close event 
         overlayWindow.on("closed", () => {
