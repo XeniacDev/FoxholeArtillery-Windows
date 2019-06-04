@@ -22,6 +22,7 @@ function createWindow() {
         },
         resizable: false,
         frame: false,
+        show: false
     })
 
     // and load the index.html of the app.
@@ -40,12 +41,14 @@ function createWindow() {
 
     landing.once("ready-to-show", () => {
         landing.show();
+        landing.focus();
     })
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
+app.disableHardwareAcceleration();
 app.on('ready', createWindow)
 
 // Quit when all windows are closed.

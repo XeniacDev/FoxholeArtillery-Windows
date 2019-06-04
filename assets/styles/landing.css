@@ -253,7 +253,7 @@
     cursor: pointer;
 }
 
-#startTheGame {
+#startTheGameBtn {
     display: block;
     background: #4565ae;
     border: none;
