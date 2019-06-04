@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'Calibri';
+    src: url('../fonts/Calibri.woff2') format('woff2'),
+        url('../fonts/Calibri.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Calibri';
+    font-weight: normal;
+    font-style: normal;
+
+    -webkit-user-select: none;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #191919;
+    color: white;
+    overflow-x: hidden;
+    cursor: default;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    color: white;
+    font-size: 14pt;
+    letter-spacing: -.5px;
+}
+
+.margin-top-70 {
+    margin-top: 70px;
+}
+
+.row-display-flex {
+    display: flex;
+    flex-direction: row;
+}
