@@ -1,7 +1,9 @@
 const $ = require('jquery');
-const bezz = require("jquery-bez");
+require("jquery-bez");
 
 
+
+// Jquery animation for ArtyCalc modal overlay
 
 $(document).ready(() => {
     $("#overlay_content_box").click(
@@ -11,7 +13,7 @@ $(document).ready(() => {
                     height: "686px",
             }, 500, $.bez([.52, .25, .15, .99]));
             $("#overlay_content_box").css('border-radius', '5px');
-            
+            $("#overlay_content_box").css("cursor", "default");
         }
     )
 });

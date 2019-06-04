@@ -24,12 +24,20 @@ body {
 }
 
 #overlay_content .overlay_minimize_btn {
+    position: absolute;
+    top: -5px;
+    right: -5px;
     width: 50px;
     height: 50px;
     background: red;
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-radius: 5px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.overlay_minimize_btn span {
+    margin-top: -4px;
 }
