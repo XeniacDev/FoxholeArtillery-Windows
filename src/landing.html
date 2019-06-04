@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- css import -->
+    <link rel="stylesheet" href="../assets/styles/main.css" />
+    <link rel="stylesheet" href="../assets/styles/landing.css" />
+    <link rel="stylesheet" href="../assets/styles/scrollbar.css" />
+
+    <title id="AppTitle">FoxholeArtillery</title>
+</head>
+<body>
+
+    <div id="container">
+        <!-- top nav -->
+        <nav>
+            <div id="titleShown"></div>
+            <div id="buttons">
+                <div id="minimize">
+                    <span>-</span>
+                </div>
+                <div id="close">
+                    <span>&times;</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- status menu -->
+        <div id="status-menu">
+            <div id="status-menu__overlayToggle">
+                <p>INGAME OVERLAY</p>
+                <input class="tgl tgl-ios" id="cb2" type="checkbox" />
+                <label class="tgl-btn" for="cb2"></label>
+            </div>
+            <div id="status-menu__icons">
+                <div class="statusBtn" id="information">
+                    <img src="../assets/images/information.svg">
+                </div>
+                <div class="statusBtn" id="update">
+                    <img src="../assets/images/update.svg">
+                </div>
+            </div>
+        </div>
+
+        <!-- main content -->
+        <div id="landingContent">
+            <div class="LandingContent__background"></div>
+            <main id="landingActuallContent">
+                <div class="app-startup-information">
+                    <p class="header">What do you need for start</p>
+                    <div class="status-text">
+                        <div class="status-text-image">
+                            <img src="../assets/images/passed.png"  id="status-text-passed" />
+                        </div>
+                        <p class="status-description">Foxhole Windowed Fullscreen mod</p>
+                    </div>
+                    <div class="status-text">
+                        <div class="status-text-image">
+                            <img src="../assets/images/error.svg" id="status-text-passed" />
+                        </div>
+                        <p class="status-description">Run the steam</p>
+                        <span class="status-text-autoFix" id="autoFix">auto fix</span>
+                    </div>
+                    <button id="startTheGame">Start the game</button>
+                </div>
+                <div class="update-changelog">
+                    <p class="header">Update <span id="AppVersion">1.0.0</span> change log</p>
+                    <div class="updateLogs">
+                        <li>Release the app. Yay !!</li>
+                        <li>Fix some bugs</li>
+                    </div>
+                </div>
+                <div class="community-accounts">
+                    <p class="header">Community</p>
+                    <div class="row-display-flex" id="icon_containers">
+                        <div class="icon-box icon-box--red">
+                            <img src="../assets/images/github-logo.svg">
+                        </div>
+                        <div class="icon-box icon-box--purple">
+                            <img src="../assets/images/Discord-Logo-White.svg">
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </div>
+
+    <script src="landing.js"></script>
+    <script src="menuHandler.js"></script>
+</body>
+</html>

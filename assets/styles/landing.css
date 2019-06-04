@@ -1,0 +1,331 @@
+#container {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+/* top nav */
+/* ------------------ */
+#container nav {
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-color: #111111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-app-region: drag;
+    z-index: 99;
+}
+
+#container nav #titleShown {
+    height: 100%;
+    color: #474646;
+    font-size: 12pt;
+    padding: 0 0 0 20px;
+    display: flex;
+    line-height: 30px;
+}
+
+#container nav #buttons {
+    display: flex;
+    width: 100px;
+    -webkit-app-region: no-drag;
+    margin-right: -20px;
+}
+
+#buttons #minimize,
+#buttons #close {
+    width: 33%;
+    color: #6c6c6c;
+    text-align: center;
+    font-size: 26px;
+    transition: 0.1s ease-in-out;
+}
+
+#buttons #close:hover {
+    background: #FF0000;
+    color: white;
+}
+
+#buttons #minimize:hover {
+    background: #0a0a0a;
+    color: white;
+}
+
+/* status nav */
+/* ------------------ */
+
+#status-menu {
+    width: 100%;
+    height: 50px;
+    background: #161616;
+
+    display: flex;
+}
+
+#status-menu__overlayToggle {
+    display: flex;
+    padding: 0 0 0 20px;
+    margin-right: auto;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#status-menu__overlayToggle p {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+
+#status-menu__icons {
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+#status-menu__icons .statusBtn {
+    width: 20px;
+    height: 100%;
+    cursor: pointer;
+
+
+}
+
+#status-menu__icons .statusBtn:not(:last-child) {
+    margin: 0 20px 0 15px;
+}
+
+#status-menu__icons .statusBtn img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* Toggle codes */
+/* ------------------ */
+.tgl {
+    display: none;
+}
+
+.tgl::selection,
+.tgl:after::selection,
+.tgl:before::selection,
+.tgl *::selection,
+.tgl *:after::selection,
+.tgl *:before::selection,
+.tgl+.tgl-btn::selection {
+    background: none;
+}
+
+.tgl+.tgl-btn {
+    outline: none;
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.tgl+.tgl-btn:after {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 125%;
+    background: #202020;
+    border-radius: 5px;
+    bottom: 3px;
+}
+
+.tgl+.tgl-btn:after {
+    left: 0;
+    transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.tgl+.tgl-btn:before {
+    display: none;
+}
+
+.tgl:checked+.tgl-btn:after {
+    left: 50%;
+    background: #4565ae;
+}
+
+.tgl:checked+.tgl-btn {
+    background: #4565ae;
+}
+
+.tgl-ios+.tgl-btn {
+    background: #101010;
+    border-radius: 4px;
+    height: 20px;
+    width: 55px;
+    transition: all .4s ease;
+}
+
+
+/* Landing-content */
+/* ------------------ */
+
+#landingContent {
+    width: 100%;
+    height: calc(100% - 80px);
+}
+
+.LandingContent__background {
+    width: 100%;
+    height: 100%;
+    background: url(../images/LandingWallpaper.png) no-repeat right 70px;
+    background-size: cover;
+    opacity: 0.3;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99;
+}
+
+#landingActuallContent {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    grid-auto-rows: auto;
+
+    grid-template-areas:
+        "startup startup logs"
+        "community community community ";
+
+    padding: 50px;
+}
+
+.app-startup-information {
+    grid-area: startup;
+}
+
+/* Landing-content text styles */
+/* ------------------ */
+.status-text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-top: 40px;
+}
+
+.status-text+div {
+
+
+    margin-top: 15px;
+}
+
+.status-text-image {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
+
+.status-text-image img {
+    width: 100%;
+    height: 100%;
+    margin-right: 15px;
+}
+
+.status-text-autoFix {
+    color: #6091ff;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.status-text-autoFix:hover {
+    color: #487ffd;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+#startTheGame {
+    display: block;
+    background: #4565ae;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    padding: 14px 25px;
+    font-size: 14px;
+    margin-top: 35px;
+    cursor: pointer;
+}
+
+
+.update-changelog {
+    grid-area: logs;
+}
+
+/* Update text styles */
+/* ------------------ */
+
+.updateLogs {
+    height: 160px;
+    margin-top: 10px;
+    overflow-y: auto;
+}
+
+.updateLogs li {
+    color: #828181;
+    margin-top: 7px;
+}
+
+.updateLogs li::before {
+    content: "-  ";
+    color: #828181;
+}
+
+
+.community-accounts {
+    grid-area: community;
+    margin-top: 80px;
+}
+
+/* Update icon styles */
+/* ------------------ */
+
+.icon-box {
+    width: 76px;
+    height: 76px;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 20px;
+
+    cursor: pointer;
+}
+
+.icon-box img {
+    width: 50%;
+    height: 50%;
+}
+
+.icon-box--red {
+    background: #ff4848;
+}
+
+.icon-box--purple {
+    background: #7289da;
+}
+
+#icon_containers > div {
+    margin-right: 15px;
+}
