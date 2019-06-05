@@ -4,6 +4,7 @@ body {
 
 
 #overlay_content_box {
+    position: relative;
     border-radius: 5px;
     width: 360px;
     height: 686px;
