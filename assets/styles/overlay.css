@@ -4,58 +4,10 @@ body {
 
 
 #overlay_content_box {
-    position: relative;
     border-radius: 5px;
     width: 360px;
     height: 686px;
     background-color: #191919;
     margin: 70px 0 0 10px;
-    z-index: -1;
 }
 
-#overlay_content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#overlay_content .overlay_minimize_btn {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    width: 30px;
-    height: 30px;
-    background: red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 999;
-}
-
-.overlay_minimize_btn span {
-    margin-top: -4px;
-}
-
-
-.overlay_wallpaper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: -99;
-}
-
-.overlay_wallpaper img {
-    width: 100%;
-    height: 100%;
-    opacity: 0.7
-}
-
-.artilleryType_selection {
-    justify-content: space-between
-}
