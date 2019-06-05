@@ -111,68 +111,6 @@
 
 
 
-/* Toggle codes */
-/* ------------------ */
-.tgl {
-    display: none;
-}
-
-.tgl::selection,
-.tgl:after::selection,
-.tgl:before::selection,
-.tgl *::selection,
-.tgl *:after::selection,
-.tgl *:before::selection,
-.tgl+.tgl-btn::selection {
-    background: none;
-}
-
-.tgl+.tgl-btn {
-    outline: none;
-    display: block;
-    position: relative;
-    cursor: pointer;
-}
-
-.tgl+.tgl-btn:after {
-    position: relative;
-    display: block;
-    content: "";
-    width: 50%;
-    height: 125%;
-    background: #202020;
-    border-radius: 5px;
-    bottom: 3px;
-}
-
-.tgl+.tgl-btn:after {
-    left: 0;
-    transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
-}
-
-.tgl+.tgl-btn:before {
-    display: none;
-}
-
-.tgl:checked+.tgl-btn:after {
-    left: 50%;
-    background: #4565ae;
-}
-
-.tgl:checked+.tgl-btn {
-    background: #4565ae;
-}
-
-.tgl-ios+.tgl-btn {
-    background: #101010;
-    border-radius: 4px;
-    height: 20px;
-    width: 55px;
-    transition: all .4s ease;
-}
-
-
 /* Landing-content */
 /* ------------------ */
 
