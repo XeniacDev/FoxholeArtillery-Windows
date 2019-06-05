@@ -26,7 +26,7 @@
         <div class="overlay_content">
             <div class="overlay_content__header_box">
                 <p class="overlay_content__title">Select Artillery Type</p>
-                <span class="overlay_content__selectedType" id="selected_Arty_text">Howitzer selected</span>
+                <span class="overlay_content__selectedType text-color-gray" id="selected_Arty_text">Howitzer selected</span>
             </div>
             <div class="overlay_content_select_arty_box">
                 <div class="overlay_content_radio">
@@ -65,10 +65,27 @@
                 <input type="number" id="friendlyDistance" placeholder="Enemy Distance">
                 <input type="number" id="friendlyAzimuth" placeholder="Enemy Distance">
             </div>
+            <div class="hr"></div>
+            <div class="overlay_content__header_box">
+                <p class="overlay_content__title">Enemy Coordinates</p>
+                <span class="overlay_content__selectedType text-color-green" id="errorText">Happy Hunting !</span>
+            </div>
+            <div class="overlay_content_coords_result">
+                <div class="overlay_content_coords_result_content_box" id="resultDistance">
+                    <p class="result_title">DISTANCE</p>
+                    <p class="result_coords">124<span>m</span></p>
+                </div>
+                <div class="overlay_content_coords_result_content_box" id="resultDistance">
+                    <p class="result_title">AZIMUTH</p>
+                    <p class="result_coords">45<span>deg</span></p>
+                </div>
+                <div class="overlay_content_copy_icon">
+                    <img src="../assets/images/copy-content.svg" />
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="overlay.js"></script>
-    <script src="jquery.bez.min.js"></script>
 </body>
 </html>

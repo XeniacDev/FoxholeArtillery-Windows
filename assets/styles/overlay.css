@@ -51,8 +51,6 @@ body {
 
 .overlay_content__selectedType {
     font-size: 12px;
-    color: #6c6c6c;
-
 }
 
 .overlay_content_select_arty_box {
@@ -129,4 +127,39 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number]:focus {
     outline: 1px solid #ffa32b;
+}
+
+
+
+.overlay_content_coords_result {
+    display: flex;
+    align-items: center;
+    margin: 25px 0 0 0;
+}
+
+.overlay_content_coords_result_content_box:not(:first-child) {
+    margin-right: auto;
+    margin-left: 20px;
+}
+
+.result_title {
+    font-size: 14px;
+    color: #737373;
+}
+
+.result_coords {
+    font-size: 35px;
+}
+
+.overlay_content_copy_icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay_content_copy_icon img {
+    width: 50%;
+    height: 50%;
 }

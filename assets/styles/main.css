@@ -64,3 +64,15 @@ a {
     background: #272626;
     margin: 15px 0;
 }
+
+.text-color-gray {
+    color: #6c6c6c;
+}
+
+.text-color-red {
+    color: #ff4848;
+}
+
+.text-color-green {
+    color: #3afa35;
+}
