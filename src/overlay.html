@@ -13,78 +13,8 @@
 </head>
 <body>
 
-    <!-- content menu -->
-    <!-- we need a button for opening the ArtyCalc -->
-    <!-- We need a button to close the Calc and back to button -->
+   
 
-
-    <div id="overlay_content_box">
-     
-        <div class="overlay_wallpaper">
-            <img src="../assets/images/OverlayWallpaper.png" />
-        </div>
-        <div class="overlay_content">
-            <div class="overlay_content__header_box">
-                <p class="overlay_content__title">Select Artillery Type</p>
-                <span class="overlay_content__selectedType text-color-gray" id="selected_Arty_text">Howitzer selected</span>
-            </div>
-            <div class="overlay_content_select_arty_box">
-                <div class="overlay_content_radio">
-                    <input type="radio" name="arty_type" value="FieldArtillery" id="Fa">
-                    <label for="Fa">
-                        <img src="../assets/images/Field_Artillery.png" >
-                    </label>
-                </div>
-                <div class="overlay_content_radio">
-                    <input type="radio" name="arty_type" value="GunBoat" id="Gb">
-                    <label for="Gb">
-                        <img src="../assets/images/Gunship.png">
-                    </label>
-                </div>
-                <div class="overlay_content_radio">
-                    <input type="radio" name="arty_type" value="Howitzer" id="Howi">
-                    <label for="Howi">
-                        <img src="../assets/images/Howitzer_kit.png">
-                    </label>
-                </div>
-                <div class="overlay_content_radio">
-                    <input type="radio" name="arty_type" value="Mortar" id="Mor">
-                    <label for="Mor">
-                        <img src="../assets/images/Mortar.png">
-                    </label>
-                </div>
-            </div>
-            <div class="hr"></div>
-            <p class="overlay_content__title">To Enemy Position</p>
-            <div class="overlay_content__textboxes">
-                <input type="number" id="enemyDistance" placeholder="Enemy Distance">
-                <input type="number" id="enemyAzimuth" placeholder="Enemy Distance">
-            </div>
-            <p class="overlay_content__title">To Friendly Artillery</p>
-            <div class="overlay_content__textboxes">
-                <input type="number" id="friendlyDistance" placeholder="Enemy Distance">
-                <input type="number" id="friendlyAzimuth" placeholder="Enemy Distance">
-            </div>
-            <div class="hr"></div>
-            <div class="overlay_content__header_box">
-                <p class="overlay_content__title">Enemy Coordinates</p>
-                <span class="overlay_content__selectedType text-color-green" id="errorText">Happy Hunting !</span>
-            </div>
-            <div class="overlay_content_coords_result">
-                <div class="overlay_content_coords_result_content_box" id="resultDistance">
-                    <p class="result_title">DISTANCE</p>
-                    <p class="result_coords">124<span>m</span></p>
-                </div>
-                <div class="overlay_content_coords_result_content_box" id="resultDistance">
-                    <p class="result_title">AZIMUTH</p>
-                    <p class="result_coords">45<span>deg</span></p>
-                </div>
-                <div class="overlay_content_copy_icon">
-                    <img src="../assets/images/copy-content.svg" />
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="overlay.js"></script>
 </body>
