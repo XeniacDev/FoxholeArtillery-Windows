@@ -1,5 +1,7 @@
 body {
     background: transparent !important;
+    overflow: hidden;
+
 }
 
 
@@ -9,6 +11,76 @@ body {
     width: 360px;
     height: 686px;
     background-color: #191919;
-    margin: 70px 0 0 10px;
+    z-index: 0;
 }
 
+.overlay_wallpaper img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 0;
+}
+
+.overlay_content {
+
+    position: relative;
+    padding: 130px 20px 0 20px;
+    z-index: 99;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.overlay_content__title {
+    font-size: 14px;
+}
+
+.overlay_content__selectedType {
+    font-size: 12px;
+    color: #6c6c6c;
+}
+
+.overlay_content_select_arty_box {
+    flex-basis: 100%;
+}
+
+.overlay_content_select_arty_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    box-sizing: border-box;
+}
+
+.overlay_content_radio {
+    width: 76px;
+    height: 76px;
+    background: #121212;
+    border-radius: 5px;
+}
+
+.overlay_content_radio label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.09s ease-in-out;
+}
+
+.overlay_content_radio label img {
+    width: 75%;
+    height: 75%;
+    object-fit: cover;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked+label {
+    background: #ffa32b;
+    border-radius: 5px;
+}

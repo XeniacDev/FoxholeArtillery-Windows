@@ -19,16 +19,42 @@
 
 
     <div id="overlay_content_box">
-        <input type="radio" name="gender" value="male"> Male<br>
-        <input type="radio" name="gender" value="female"> Female<br>
-        <input type="radio" name="gender" value="other"> Other
+     
+        <div class="overlay_wallpaper">
+            <img src="../assets/images/OverlayWallpaper.png" />
+        </div>
+        <div class="overlay_content">
+            <p class="overlay_content__title">Select Artillery Type</p>
+            <span class="overlay_content__selectedType" id="selected_Arty_text">Howitzer selected</span>
+            <div class="overlay_content_select_arty_box">
+                <div class="overlay_content_radio">
+                    <input type="radio" name="arty_type" value="FieldArtillery" id="Fa">
+                    <label for="Fa">
+                        <img src="../assets/images/Field_Artillery.png" >
+                    </label>
+                </div>
+                <div class="overlay_content_radio">
+                    <input type="radio" name="arty_type" value="GunBoat" id="Gb">
+                    <label for="Gb">
+                        <img src="../assets/images/Gunship.png">
+                    </label>
+                </div>
+                <div class="overlay_content_radio">
+                    <input type="radio" name="arty_type" value="Howitzer" id="Howi">
+                    <label for="Howi">
+                        <img src="../assets/images/Howitzer_kit.png">
+                    </label>
+                </div>
+                <div class="overlay_content_radio">
+                    <input type="radio" name="arty_type" value="Mortar" id="Mor">
+                    <label for="Mor">
+                        <img src="../assets/images/Mortar.png">
+                    </label>
+                </div>
+            </div>
+            <div class="hr"></div>
+        </div>
     </div>
-
-
-
-
-                    
-
 
     <script src="overlay.js"></script>
     <script src="jquery.bez.min.js"></script>
