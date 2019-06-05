@@ -24,8 +24,10 @@
             <img src="../assets/images/OverlayWallpaper.png" />
         </div>
         <div class="overlay_content">
-            <p class="overlay_content__title">Select Artillery Type</p>
-            <span class="overlay_content__selectedType" id="selected_Arty_text">Howitzer selected</span>
+            <div class="overlay_content__header_box">
+                <p class="overlay_content__title">Select Artillery Type</p>
+                <span class="overlay_content__selectedType" id="selected_Arty_text">Howitzer selected</span>
+            </div>
             <div class="overlay_content_select_arty_box">
                 <div class="overlay_content_radio">
                     <input type="radio" name="arty_type" value="FieldArtillery" id="Fa">
@@ -53,6 +55,16 @@
                 </div>
             </div>
             <div class="hr"></div>
+            <p class="overlay_content__title">To Enemy Position</p>
+            <div class="overlay_content__textboxes">
+                <input type="number" id="enemyDistance" placeholder="Enemy Distance">
+                <input type="number" id="enemyAzimuth" placeholder="Enemy Distance">
+            </div>
+            <p class="overlay_content__title">To Friendly Artillery</p>
+            <div class="overlay_content__textboxes">
+                <input type="number" id="friendlyDistance" placeholder="Enemy Distance">
+                <input type="number" id="friendlyAzimuth" placeholder="Enemy Distance">
+            </div>
         </div>
     </div>
 
