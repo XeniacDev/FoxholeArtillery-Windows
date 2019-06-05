@@ -66,6 +66,7 @@
     background: #161616;
 
     display: flex;
+    justify-content: flex-end;
 }
 
 #status-menu__overlayToggle {
