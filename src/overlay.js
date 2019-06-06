@@ -23,13 +23,51 @@ enemyDis.onkeyup = CalcSender;
 enemyAzim.onkeyup = CalcSender;
 friendlyDis.onkeydup = CalcSender;
 friendlyAzim.onkeyup = CalcSender;
+
+// use this method for send data 
 function CalcSender() {
-    if(enemyDis.value != "" && enemyAzim.value != "" && friendlyDis.value != "" && friendlyDis != "" ) {
-        // send values to calc method
+    if(enemyDis.value != "" && enemyAzim.value != "" && friendlyDis.value != "" && friendlyAzim.value != "" ) {
+        // check that values are valid or not
+        if(IsValid(enemyDis.value,enemyAzim.value,friendlyDis.value,friendlyAzim.value) === true) {
+            // if all of they were valid send data for calculation
+        }
+        else {
+            // show the error 
+        }
     }
 }
 
 
+// Helper methods
+function Getradiant(angle) {
+    // use this for calc cos
+    return (Math.PI * angle / 180);
+}
+function Getdegree(angle) {
+    return (angle * 180 / Math.PI);
+}
+function angleConverter(angle) {
+    return ((angle > 360) ? angle - 360 : angle);
+}
+
+// use this for data validation
+function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue) {
+    let isValid = true;
+    // Conditions
+    // 1. dis === dis and azim === azim  
+    if((enemyDisValue === friendlyDisValue && enemyAzimValue === friendlyAzimValue)) {
+        isValid = false;
+    }
+    // 2. enemy dis - friendly dis  < 45
+    if((enemyDisValue - friendlyDisValue) < 45)
+    {
+        isValid = false;
+    }
+    // 3. all zero
+    if(enemyDisValue === 0 && enemyAzimValue === 0 && friendlyDisValue ===0 && friendlyAzimValue === 0) {
+        isValid = false;
+    }
+}
 
 
 
@@ -59,7 +97,8 @@ const errorList = {
     emptyFields: "Fields can not be empty",
     closeTarget: "Target is too close to artillery ",
     sameCoords: "Target and Friendly distance and azimuth must not be the same.",
-    zeroCoords: "Target and Friendly distance must not be both 0.",
+    zeroCoords: "Target and Friendly must not be both 0.",
+    lowRange: "The distance can not be less than 45m",
 }
 
 // Arty ranges
@@ -80,17 +119,4 @@ const artilleryRanges = {
         MinRange: 75,
         MaxRange: 150
     }
-}
-
-
-// Helper methods
-function Getradiant(angle) {
-    // use this for calc cos
-    return (Math.PI * angle / 180);
-}
-function Getdegree(angle) {
-    return (angle * 180 / Math.PI);
-}
-function angleConverter(angle) {
-    return ((angle > 360) ? angle - 360 : angle);
 }
