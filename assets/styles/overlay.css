@@ -1,5 +1,6 @@
 body {
     background: transparent !important;
+    overflow: hidden;
 }
 
 
@@ -149,7 +150,12 @@ input[type="radio"]:checked+label {
 
 
 
+
 /* textboxes */
+.overlay_textboxes_content {
+    margin: 15px 0 15px 0;
+}
+
 input[type="number"] {
     width: 49%;
     height: 56px;
@@ -157,6 +163,8 @@ input[type="number"] {
     border: 0;
     border-radius: 5px;
     padding-left: 20px;
+    color: white;
+    font-size: 16px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -166,6 +174,25 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
+/* result coordinates */
+.result_coordinates__contents {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.coordinate_box:not(:first-child){
+    margin-left: 20px;
+} 
+.overlay__primaryNumber {
+    font-size: 30px;
+}
+
+.result_coordinates__copy img {
+    width: 25px;
+    height: 25px;
+}
 
 /* extra classes used for animation */
 .overlay_Animation {
@@ -174,4 +201,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .display_none {
     display: none;
+}
+
+.margin-top20 {
+    margin-top: 35px;
 }
