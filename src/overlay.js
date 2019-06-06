@@ -23,17 +23,13 @@ openOverlay.addEventListener("click",() => {
     overlayBox.classList.add("overlay_Animation");
     // 3. display none for openOverlay
     openOverlay.classList.add("display_none");
-    openOverlay.style.opacity = 0;
-    openOverlay.style.transition = "opacity 1s";
     //4 show content
-    // .. unfade 
+    // .. fadein
+    overlayContent.classList.add("opacity_animation")
     overlayContent.style.opacity = 1;
     // .. remove display class from wallpaper
     overlayWallpaper.classList.remove("display_none");
-    // .. moving animation
-    //overlayContent.style.paddingTop = 0;
 
-    // change close button text to minimize insead of close when form is opened
     // .. add ' >> '  character
     overlayBtn.innerHTML = "&#171;"
 
@@ -46,6 +42,10 @@ openOverlay.addEventListener("click",() => {
 overlayBtn.addEventListener("click", () => {
     // 1.check is open or not
     if(IsOpened === true) {
+
+       // overlayContent.classList.add("display_none");
+       //overlayContent.style.visibility = "hidden";
+
         // 2. if === open minimize the overlay
         // .. close the overlay container , back to orginal size
         overlayBox.style.width = "55px";
@@ -55,9 +55,9 @@ overlayBtn.addEventListener("click", () => {
         overlayBox.style.marginTop = "130px";
         // 3. remove display none for openOverlay
         openOverlay.classList.remove("display_none");
-        openOverlay.style.opacity = 1;
         //4 show content
-        // .. fade 
+        // .. fade
+        overlayContent.classList.remove("opacity_animation")
         overlayContent.style.opacity = 0;
         // .. add display class from wallpaper
         overlayWallpaper.classList.add("display_none");
@@ -73,6 +73,7 @@ overlayBtn.addEventListener("click", () => {
         overlayRemoteHandler.close();
     }
 })
+overlayContent.classList.remove("display_none");
 
 
 
