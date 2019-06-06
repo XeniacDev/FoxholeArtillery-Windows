@@ -2,6 +2,7 @@ let openOverlay = document.getElementById("openOverlay");
 let overlayBox = document.getElementById("overlayBox");
 let overlayContent = document.getElementById("overlay_content");
 let overlayWallpaper = document.getElementById("overlay_wallpaper");
+let overlayBtn = document.getElementById("overlay_max_btn_content");
 
 overlayContent.style.opacity = 0;
 
@@ -23,6 +24,10 @@ openOverlay.addEventListener("click",() => {
     overlayWallpaper.classList.remove("display_none");
     // .. moving animation
     //overlayContent.style.paddingTop = 0;
+
+    // change close button text to minimize insead of close when form is opened
+    // .. add ' >> '  character
+    overlayBtn.innerHTML = "&#171;"
 });
 
 
