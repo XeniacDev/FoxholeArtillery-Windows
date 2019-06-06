@@ -19,7 +19,7 @@
         <div class="overlay_arty_image" id="openOverlay" >
             <img src="../assets/images/Arty.svg" />
         </div>
-            <div id="overlay_content">
+            <div id="overlay_content" style="opacity: 0;">
                 <div class="overlay_content__wallpaper">
                     <img src="../assets/images/OverlayWallpaper.png" />
                 </div>
@@ -27,6 +27,40 @@
                     <div class="overlay_content__title">
                         <p class="overlay__primaryTitle">Select Artillery Type</p>
                         <p class="overlay__secondTitle">Howitzer selected</p>
+                    </div>
+                    <div class="artillery_type_radio">
+                        <div class="type_single_radio">
+                            <input type="radio" id="Fieldartillery" name="arty_type" value="Fa">
+                            <label for="Fieldartillery">
+                                <img src="../assets/images/Field_Artillery.png">
+                            </label>
+                        </div>
+                        <div class="type_single_radio">
+                            <input type="radio" id="Gunboat" name="arty_type" value="Gb">
+                            <label for="Gunboat">
+                                <img src="../assets/images/Gunship.png">
+                            </label>
+                        </div>
+                        <div class="type_single_radio">
+                            <input type="radio" id="Howitzer" name="arty_type" value="Howi">
+                            <label for="Howitzer">
+                                <img src="../assets/images/Howitzer_kit.png">
+                            </label>
+                        </div>
+                        <div class="type_single_radio">
+                            <input type="radio" id="Mortar" name="arty_type" value="Mor">
+                            <label for="Mortar">
+                                <img src="../assets/images/Mortar.png">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="overlay_content__title">
+                        <p class="overlay__primaryTitle">To Enemy Position</p>
+                    </div>
+                    <div class="overlay_textboxes">
+                        <input type="number" placeholder="Enemy Distance"/>
+                        <input type="number" placeholder="Enemy Azimuth">
                     </div>
                 </div>
                 
