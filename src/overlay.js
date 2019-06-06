@@ -62,11 +62,6 @@ function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue
         isValid = false;
         errorLabel.textContent = errorList.sameCoords;
     }
-    // 3. all zero
-    if(enemyDisValue === 0 && enemyAzimValue === 0 && friendlyDisValue ===0 && friendlyAzimValue === 0) {
-        isValid = false;
-        errorLabel.textContent = errorList.zeroCoords;
-    }
     return isValid;
 }
 
@@ -98,7 +93,6 @@ const errorList = {
     emptyFields: "Fields can not be empty",
     closeTarget: "Target is too close to artillery ",
     sameCoords: "Coordinates must not be the same.",
-    zeroCoords: "Coordinatesmust not be both 0.",
     lowRange: "distance can't be less than 45m",
 }
 
