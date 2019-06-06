@@ -63,25 +63,40 @@ body {
     position: relative;
     z-index: 0;
 }
+
 .overlay_content__wallpaper {
     position: absolute;
     width: 100%;
     height: auto;
-    z-index: 0;
+    z-index: -1;
 }
+
 .overlay_content__wallpaper img {
     width: 100%;
     height: 100%;
 }
 
-.overlay_content_title {
+.overlay_form__content {
+    padding: 135px 20px 0px 20px;
+}
+
+
+/* title style */
+.overlay_content__title {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.overlay__primaryTitle {
+    color: white;
+    font-size: 14px;
+}
 
-
+.overlay__secondTitle {
+    color: #6c6c6c;
+    font-size: 12px;
+}
 
 
 
