@@ -5,7 +5,7 @@ body {
 
 
 .overlay_container {
-    margin-top: 30px;
+    margin-top: 65px;
     position: relative;
     width: 75px;
     height: 75px;
@@ -192,6 +192,7 @@ input[type=number]::-webkit-outer-spin-button {
 .result_coordinates__copy img {
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
 
 /* extra classes used for animation */
