@@ -33,24 +33,23 @@ function CalcSender() {
         // check that values are valid or not
         if(IsValid(enemyDis.value,enemyAzim.value,friendlyDis.value,friendlyAzim.value) === true) {
             // if all of they were valid send data for calculation
-        }
-        else {
-            // show the error 
+            artilleryCalculator(enemyDis.value, enemyAzim.value, friendlyDis.value, friendlyAzim.value)
         }
     }
 }
 
 
 // Helper methods
-function Getradiant(angle) {
-    // use this for calc cos
-    return (Math.PI * angle / 180);
+function convert_angle(angle) {
+	return ((angle > 360) ? angle - 360 : angle);
 }
-function Getdegree(angle) {
-    return (angle * 180 / Math.PI);
+
+function rad(angle) {
+	return (Math.PI * angle / 180);
 }
-function angleConverter(angle) {
-    return ((angle > 360) ? angle - 360 : angle);
+
+function deg(angle) {
+	return (angle * 180 / Math.PI);
 }
 
 // use this for data validation
@@ -62,19 +61,37 @@ function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue
         isValid = false;
         errorLabel.textContent = errorList.sameCoords;
     }
+    // more errors if we need :)
     return isValid;
 }
 
+// calc coords here
+function artilleryCalculator(enemyDistance,enemyAzimuth,friendlyDistance,friendlyAzimuth) {
+    // set variables
+    let resultDistance = 0;
+    let resultAzimuth = 0;
+    let delta = 0;
+    let alpha = 0;
+
+    // Math power :) 
+    delta = (enemyAzimuth > friendlyAzimuth) ? Getradiant(enemyAzimuth - friendlyAzimuth) : Getradiant(friendlyAzimuth - enemyAzimuth);
+    // result distance
+    resultDistance = Math.sqrt(enemyDistance * enemyDistance + friendlyDistance * friendlyDistance - 2 * enemyDistance * friendlyDistance *  Math.cos(delta));
+    // get angle between person and friendly arty ( Alpha ) P and A
+    alpha = Math.round(Getdegree(Math.acos((-(enemyDistance * enemyDistance) + friendlyDistance * friendlyDistance + resultDistance * resultDistance) / (2 * friendlyDistance * resultDistance))));
+    // Conditions
+    // > 180 and < 180
+    if(angleConverter(Getdegree(delta)) > 180) {
+        resultAzimuth = (enemyAzimuth > friendlyAzimuth) ? friendlyAzimuth + 180 + alpha : friendlyAzimuth + 180 - alpha;
+    }
+    else {
+        resultAzimuth = (enemyAzimuth > friendlyAzimuth) ? friendlyAzimuth + 180 - alpha : friendlyAzimuth + 180 + alpha;
+    }
 
 
-
-
-
-
-
-
-
-
+    console.log(resultDistance);
+    console.log(resultAzimuth);
+}
 
 
 
