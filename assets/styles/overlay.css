@@ -30,7 +30,7 @@ body {
     cursor: pointer;
 }
 
-.overlay_max_btn > p {
+.overlay_max_btn>p {
     margin-top: -2.5px;
     font-size: 20px;
 }
@@ -43,8 +43,18 @@ body {
     align-items: center;
     border-radius: 50%;
 }
+
 .overlay_arty_image img {
     width: 65%;
     height: 65%;
     cursor: pointer;
+}
+
+
+/* extra classes used for animation */
+.overlay_Animation {
+    transition: all 0.5s cubic-bezier(.78, .31, .18, .99);
+}
+.display_none {
+    display: none;
 }
