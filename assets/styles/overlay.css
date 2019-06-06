@@ -53,8 +53,6 @@ body {
     cursor: pointer;
 }
 
-
-
 /* content section */
 #overlay_content {
     width: 100%;
@@ -92,11 +90,14 @@ body {
 .overlay__primaryTitle {
     color: white;
     font-size: 14px;
+
+    flex-basis: 40%;
 }
 
 .overlay__secondTitle {
     color: #6c6c6c;
     font-size: 12px;
+    text-align: justify;
 }
 
 /* artillery_type_radio */
