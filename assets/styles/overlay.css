@@ -6,6 +6,7 @@ body {
 
 .overlay_container {
     margin-top: 65px;
+    margin-left: 10px;
     position: relative;
     width: 75px;
     height: 75px;
