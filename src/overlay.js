@@ -15,10 +15,8 @@ document.addEventListener("change",() => {
     // send value to change the subtitle method
     radioSubtitle.innerText = radioTitle;
     // show result c0ords
-
-    console.log("trigred");
-
 });
+
 
 // get values of textbox after type it on txboxes
 enemyDis.onkeyup = CalcSender;
@@ -27,7 +25,7 @@ friendlyDis.onkeydup = CalcSender;
 friendlyAzim.onkeyup = CalcSender;
 function CalcSender() {
     if(enemyDis.value != "" && enemyAzim.value != "" && friendlyDis.value != "" && friendlyDis != "" ) {
-        console.log("true");
+        // send values to calc method
     }
 }
 
@@ -82,4 +80,17 @@ const artilleryRanges = {
         MinRange: 75,
         MaxRange: 150
     }
+}
+
+
+// Helper methods
+function Getradiant(angle) {
+    // use this for calc cos
+    return (Math.PI * angle / 180);
+}
+function Getdegree(angle) {
+    return (angle * 180 / Math.PI);
+}
+function angleConverter(angle) {
+    return ((angle > 360) ? angle - 360 : angle);
 }
