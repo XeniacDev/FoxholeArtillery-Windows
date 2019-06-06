@@ -1,7 +1,8 @@
 let openOverlay = document.getElementById("openOverlay");
 let overlayBox = document.getElementById("overlayBox");
+let overlayContent = document.getElementById("overlay_content");
 
-
+overlayContent.style.opacity = 0;
 
 openOverlay.addEventListener("click",() => {
     // 1. open the overlay container
@@ -12,7 +13,11 @@ openOverlay.addEventListener("click",() => {
     overlayBox.classList.add("overlay_Animation");
     // 3. display none for openOverlay
     openOverlay.classList.add("display_none");
-
+    //4 show content
+    // .. unfade 
+    overlayContent.style.opacity = 1;
+    // .. moving animation
+    overlayContent.style.paddingTop = 0;
 })
 
 
