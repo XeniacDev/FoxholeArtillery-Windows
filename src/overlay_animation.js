@@ -52,7 +52,7 @@ overlayBtn.addEventListener("click", () => {
         overlayBox.style.height = "55px";
         overlayBox.style.borderRadius = "100%";
         // .. reset marginTOp 
-        overlayBox.style.marginTop = "130px";
+        overlayBox.style.marginTop = "145px";
         // 3. remove display none for openOverlay
         openOverlay.classList.remove("display_none");
         //4 show content
