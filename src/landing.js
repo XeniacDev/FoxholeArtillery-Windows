@@ -4,10 +4,6 @@ const LandingRemote = require("electron").remote;
 const path = require("path");
 const url = require("url");
 
-
-
-
-
 // get app title from <title> tag 
 let title = document.getElementById("AppTitle").innerHTML;
 
@@ -19,10 +15,6 @@ const startTheGameBtn = document.getElementById("startTheGameBtn");
 
 
 isFirst = sessionStorage.getItem("IsFirstWindow");
-
-
-
-
 
 
 startTheGameBtn.addEventListener("click", (event) => {

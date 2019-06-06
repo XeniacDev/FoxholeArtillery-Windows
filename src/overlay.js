@@ -1,3 +1,6 @@
+// require electron remote window for closing the current view
+const overlayRemote = require("electron").remote;
+
 let openOverlay = document.getElementById("openOverlay");
 let overlayBox = document.getElementById("overlayBox");
 let overlayContent = document.getElementById("overlay_content");
@@ -20,6 +23,8 @@ openOverlay.addEventListener("click",() => {
     overlayBox.classList.add("overlay_Animation");
     // 3. display none for openOverlay
     openOverlay.classList.add("display_none");
+    openOverlay.style.opacity = 0;
+    openOverlay.style.transition = "opacity 1s";
     //4 show content
     // .. unfade 
     overlayContent.style.opacity = 1;
@@ -31,9 +36,43 @@ openOverlay.addEventListener("click",() => {
     // change close button text to minimize insead of close when form is opened
     // .. add ' >> '  character
     overlayBtn.innerHTML = "&#171;"
+
+    // 5 form is open we need to change the flag to true
+    IsOpened = true;
 });
 
 
+// close and minimize for Overlay
+overlayBtn.addEventListener("click", () => {
+    // 1.check is open or not
+    if(IsOpened === true) {
+        // 2. if === open minimize the overlay
+        // .. close the overlay container , back to orginal size
+        overlayBox.style.width = "55px";
+        overlayBox.style.height = "50px";
+        overlayBox.style.borderRadius = "50%";
+        // .. reset marginTOp 
+        overlayBox.style.marginTop = "130px";
+        // 3. remove display none for openOverlay
+        openOverlay.classList.remove("display_none");
+        openOverlay.style.opacity = 1;
+        //4 show content
+        // .. fade 
+        overlayContent.style.opacity = 0;
+        // .. add display class from wallpaper
+        overlayWallpaper.classList.add("display_none");
+        // .. add ' x '  character
+        overlayBtn.innerHTML = "&times;"
+        // 5 form is close now we need to change the flag to true
+        IsOpened = false;
+
+    }
+    else {
+        // 3. else close the entire overlay thread
+        let overlayRemoteHandler = overlayRemote.getCurrentWindow();
+        overlayRemoteHandler.close();
+    }
+})
 
 
 
