@@ -5,13 +5,13 @@ body {
 
 
 .overlay_container {
-    margin-top: 130px;
+    margin-top: 150px;
     margin-left: 10px;
     position: relative;
     width: 55px;
     height: 55px;
     background: #191919;
-    border-radius: 50%;
+    border-radius: 100%;
     /*
     width: 360px;
     height: 686px;
