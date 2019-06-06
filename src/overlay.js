@@ -4,8 +4,9 @@ let radioSubtitle = document.getElementById("Arty_type_radio_subtitle");
 // enemy textboxes
 let enemyDis = document.getElementById("enemyDistance"); 
 let enemyAzim = document.getElementById("enemyAzimuth");
-
 //friendly textboxes
+let friendlyDis = document.getElementById("friendlyDistance");
+let friendlyAzim = document.getElementById("friendlyAzimuth");
 
 // use global change method to track everything
 document.addEventListener("change",() => {
@@ -13,14 +14,22 @@ document.addEventListener("change",() => {
     let radioTitle = document.querySelector('input[name="arty_type"]:checked').value; 
     // send value to change the subtitle method
     radioSubtitle.innerText = radioTitle;
-    // send data to calc function(textboxes if they are not empty);
-    // اگر یکیشون هم خالی بود دیتایی برای حساب کردن ارسال نمیشه
-    console.log(enemyDis.value);
     // show result c0ords
+
+    console.log("trigred");
 
 });
 
-
+// get values of textbox after type it on txboxes
+enemyDis.onkeyup = CalcSender;
+enemyAzim.onkeyup = CalcSender;
+friendlyDis.onkeydup = CalcSender;
+friendlyAzim.onkeyup = CalcSender;
+function CalcSender() {
+    if(enemyDis.value != "" && enemyAzim.value != "" && friendlyDis.value != "" && friendlyDis != "" ) {
+        console.log("true");
+    }
+}
 
 
 
