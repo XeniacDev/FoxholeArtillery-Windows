@@ -53,7 +53,6 @@ startTheGameBtn.addEventListener("click", (event) => {
 
         isFirstWindow = true;
 
-        console.log(LandingRemote.getGlobal());
 
         // set our window on top of bordless windowed games
         overlayWindow.setAlwaysOnTop(true);

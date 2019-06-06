@@ -6,6 +6,9 @@ let overlayBtn = document.getElementById("overlay_max_btn_content");
 
 overlayContent.style.opacity = 0;
 
+// we use this flag for form;
+let IsOpened = false;
+
 openOverlay.addEventListener("click",() => {
     // 1. open the overlay container
     overlayBox.style.width = "360px";
