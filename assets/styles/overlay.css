@@ -28,6 +28,7 @@ body {
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
+    z-index: 99;
 }
 
 .overlay_max_btn>p {
@@ -51,14 +52,40 @@ body {
 }
 
 
+
+/* content section */
 #overlay_content {
     width: 100%;
     height: 100%;
     opacity: 0;
-    padding-top: 15px;
     transition: all 0.5s cubic-bezier(.78, .31, .18, .99);
     transition-delay: 0.3s;
+    position: relative;
+    z-index: 0;
 }
+.overlay_content__wallpaper {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+}
+.overlay_content__wallpaper img {
+    width: 100%;
+    height: 100%;
+}
+
+.overlay_content_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+
+
+
 
 /* extra classes used for animation */
 .overlay_Animation {

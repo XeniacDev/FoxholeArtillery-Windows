@@ -17,8 +17,8 @@ openOverlay.addEventListener("click",() => {
     // .. unfade 
     overlayContent.style.opacity = 1;
     // .. moving animation
-    overlayContent.style.paddingTop = 0;
-})
+    //overlayContent.style.paddingTop = 0;
+});
 
 
 
