@@ -117,31 +117,32 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
 }
 
 function WriteResults(resultDistance, resultAzimuth) {
+    let correctCoordinates = 0;
     // .. save R_dis by one floating point
     // .. check for how increase distance
     // .... first we need to know what type of arty is checked right now
     // .... after that we can access the Max and min rnage
     switch(radioTitle) {
         case "Field artillery":
-            correctedDistance(resultDistance, {
+            correctCoordinates = correctedDistance(resultDistance, {
                 // send arty-type data for calculate the distance for each arty
                 artyName: radioTitle,
             });
             break;
         case "Gunboat":
-            correctedDistance(resultDistance, {
+            correctCoordinates = correctedDistance(resultDistance, {
                 // send arty-type data for calculate the distance for each arty
                 artyName: radioTitle,
             });
             break;
         case "Howitzer":
-            correctedDistance(resultDistance, {
+            correctCoordinates = correctedDistance(resultDistance, {
                 // send arty-type data for calculate the distance for each arty
                 artyName: radioTitle,
             });
             break;
         case "Mortar":
-            correctedDistance(resultDistance, {
+            correctCoordinates = correctedDistance(resultDistance, {
                 // send arty-type data for calculate the distance for each arty
                 artyName: radioTitle,});
             break;
@@ -205,8 +206,7 @@ function correctedDistance(distance, Artilleryobject) {
             }
             break;
     }
-
-
+    return result;
 }
 
 // error list
