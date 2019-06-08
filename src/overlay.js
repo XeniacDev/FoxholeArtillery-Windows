@@ -2,7 +2,7 @@
 *
 *       FOXHOLE ARTILLERY CALCULATOR 
 *       SOURCE: http://www.foxhole-arty.com/
-*       CREATE BY [11TH GUIZMO]
+*       CREATE BY [11TH GUIZMO] ( only calc algorithm not more )
 *       THANK YOU GUIZMO :P
 */
 
@@ -17,13 +17,15 @@ let enemyAzim = document.getElementById("enemyAzimuth");
 let friendlyDis = document.getElementById("friendlyDistance");
 let friendlyAzim = document.getElementById("friendlyAzimuth");
 
+let radioTitle = null
+
 // use global change method to track everything
 document.addEventListener("change",() => {
     // get value of selected radio button
-    let radioTitle = document.querySelector('input[name="arty_type"]:checked').value; 
+    radioTitle = document.querySelector('input[name="arty_type"]:checked').value; 
     // send value to change the subtitle method
     radioSubtitle.innerText = radioTitle;
-    // show result c0ords
+    // after a change we should call calc function for refresh ( maxRange minRange for each Arty need to be refresh)
 });
 
 
@@ -102,8 +104,85 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
     } else {
         r_azi = (e_azi > f_azi) ? f_azi + 180 - a_step : f_azi + 180 + a_step;
     }
+    console.log(radioTitle);
     console.log(r_azi);
+    console.log(r_dist);
+
+    // add result to labels
+    WriteResults(r_dist, r_azi);
 }
+
+function WriteResults(resultDistance, resultAzimuth) {
+    // .. save R_dis by one floating point
+    // .. check for how increase distance
+    // .... first we need to know what type of arty is checked right now
+    // .... after that we can access the Max and min rnage
+    switch(radioTitle) {
+        case "Field artillery":
+            console.log("Field artillery");
+            correctedDistance(resultDistance, {
+                // send arty-type data for calculate the distance for each arty
+                artyName: radioTitle,
+                MaxRange: artilleryRanges.Fieldartillery,
+                MinRange: artilleryRanges.Fieldartillery,
+                Increament: artilleryIncreament.byOne,
+
+            });
+            break;
+        case "Gunboat":
+            console.log("Gunboat");
+            break;
+        case "Howitzer":
+            console.log('Howitzer');
+            correctedDistance(resultDistance, {
+                // send arty-type data for calculate the distance for each arty
+                artyName: radioTitle,
+                MaxRange: artilleryRanges.Fieldartillery,
+                MinRange: artilleryRanges.Fieldartillery,
+                Increament: artilleryIncreament.byOne,
+
+            });
+            break;
+        case "Mortar":
+            console.log("Mortar");
+            break;
+    }
+    // .. check for range of arty based on artilleryRanges
+}
+
+// we use this class to show best coords as possbile
+function correctedDistance(distance, Artilleryobject) {
+    let result = 0;
+
+    let floatDistance = 78;
+    const Arty = Artilleryobject;
+
+    switch (Arty.artyName) {
+        case "Field artillery":
+        case "Gunboat":
+            console.log("Fa :D");
+            let intDistance = parseInt(distance);
+            // get next and previous number
+            let nextNumber = ++intDistance;
+
+            if((floatDistance - intDistance) < (nextNumber - floatDistance)){
+                // close to previous number
+                result = Math.floor(floatDistance);
+            }
+            else {
+                result = Math.round(floatDistance);
+            }
+            break;
+        case "Howitzer":
+            result = floatDistance % 5 < 3 ? (floatDistance % 5 === 0 ? floatDistance : Math.floor(floatDistance / 5) * 5) : Math.ceil(floatDistance / 5) * 5;
+            console.log("Howi :D");
+            break;
+        
+    }
+
+
+}
+
 
 // error list
 const errorList = {
@@ -117,18 +196,25 @@ const errorList = {
 const artilleryRanges = {
     Mortar: {
         MinRange: 45,
-        MaxRange: 65
+        MaxRange: 65,
     },
     Howitzer: {
         MinRange: 75,
-        MaxRange: 150
+        MaxRange: 150,
     },
     Gunboat: {
         MinRange: 50,
-        MaxRange: 100
+        MaxRange: 100,
     },
     Fieldartillery: {
         MinRange: 75,
-        MaxRange: 150
+        MaxRange: 150,
     }
-}
+};
+
+// artillery increament count
+const artilleryIncreament = {
+    byHalf: 0.5,
+    byOne: 1,
+    byFive: 5,
+};
