@@ -254,12 +254,11 @@ function correctedDistance(distance, Artilleryobject) {
             }
             break;
         case "Howitzer":
-            console.log("yay Howitzer");
-            result = roundNumbersByFive(floatDistance);
-            console.log(result);
+            result = floatNumbersRounding(floatDistance);
+            result = roundNumbersByFive(result);
             break;
         case "Mortar":
-            floatNumbersRounding(floatDistance);
+            result = floatNumbersRounding(floatDistance);
             break;
     }
     return result;
