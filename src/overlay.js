@@ -5,11 +5,15 @@
 *       CREATE BY [11TH GUIZMO] ( only calc algorithm not more )
 *       THANK YOU GUIZMO :P
 */
+let isFinishedFlag = false;
+
+
 
 
 // get variables
 let radioSubtitle = document.getElementById("Arty_type_radio_subtitle");
 let errorLabel = document.getElementById("error_label")
+errorLabel.classList.add("display_none");
 // enemy textboxes
 let enemyDis = document.getElementById("enemyDistance"); 
 let enemyAzim = document.getElementById("enemyAzimuth");
@@ -21,6 +25,7 @@ let friendlyAzim = document.getElementById("friendlyAzimuth");
 let distanceLabel = document.getElementById("distanceLabel");
 let azimuthLabel = document.getElementById("azimuthLabel");
 
+
 let radioTitle = null
 
 // use global change method to track everything
@@ -30,6 +35,17 @@ document.addEventListener("change",() => {
     // send value to change the subtitle method
     radioSubtitle.innerText = radioTitle;
     // after a change we should call calc function for refresh ( maxRange minRange for each Arty need to be refresh)
+
+    let globalAzimuth;
+    let globalDistance;
+    globalAzimuth = sessionStorage.getItem("globalAzimuth");
+    globalDistance = sessionStorage.getItem("globalDistance");
+
+    if(isFinishedFlag === true) {
+        //send new data for calculation
+        // distance - azimuth - arty name
+        WriteResults(globalDistance, globalAzimuth);
+    }
 });
 
 
@@ -83,6 +99,9 @@ function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue
     if((enemyDisValue === friendlyDisValue && enemyAzimValue === friendlyAzimValue)) {
         isValid = false;
         errorLabel.textContent = errorList.sameCoords;
+        errorLabel.classList.remove("display_none");
+        distanceLabel.innerHTML = "Error" + "<span></span>";
+        azimuthLabel.innerHTML = "Error" + "<span>°</span>";
     }
     // more errors if we need :)
     return isValid;
@@ -90,6 +109,7 @@ function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue
 
 // calc coords here
 function calc_data(e_dist, e_azi, f_dist, f_azi) {
+    errorLabel.classList.add("display_none");
     let a_delt = 0;
     let r_dist = 0;
     let a_step = 0;
@@ -105,23 +125,40 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
 
     r_dist = Math.sqrt(e_dist * e_dist + f_dist * f_dist - 2 * e_dist * f_dist * Math.cos(a_delt));
 
-    a_step = Math.round(deg(Math.acos((-(e_dist * e_dist) + f_dist * f_dist + r_dist * r_dist) / (2 * f_dist * r_dist))));
-    
-    if (convert_angle(deg(a_delt)) > 180) {
-        r_azi = (e_azi > f_azi) ? f_azi + 180 + a_step : f_azi + 180 - a_step;
-    } else {
-        //r_azi = (e_azi > f_azi) ? f_azi + 180 - a_step : f_azi + 180 + a_step;
-        if (e_azi > f_azi) {
-            r_azi = f_azi + 180 - a_step;
-        }
-        else {
-            r_azi = f_azi + 180 + a_step;
-        }
-    }
-    r_azi = convert_angle(Math.round(r_azi));
+    if(r_dist >= 45) {
+            a_step = Math.round(deg(Math.acos((-(e_dist * e_dist) + f_dist * f_dist + r_dist * r_dist) / (2 * f_dist * r_dist))));
 
-    // add result to labels
-    WriteResults(r_dist, r_azi);
+            if (convert_angle(deg(a_delt)) > 180) {
+                r_azi = (e_azi > f_azi) ? f_azi + 180 + a_step : f_azi + 180 - a_step;
+            } 
+            else {
+            //r_azi = (e_azi > f_azi) ? f_azi + 180 - a_step : f_azi + 180 + a_step;
+            if (e_azi > f_azi) {
+                r_azi = f_azi + 180 - a_step;
+            }
+            else {
+                r_azi = f_azi + 180 + a_step;
+            }
+        }
+        r_azi = convert_angle(Math.round(r_azi));
+
+        // add result to labels
+        console.log("r_dis: "+r_dist+" "+"r_azi: "+r_azi);
+
+        // set global variables
+        sessionStorage.setItem("globalAzimuth", r_azi);
+        sessionStorage.setItem("globalDistance", r_dist);
+
+        WriteResults(r_dist, r_azi);
+        global = r_dist;
+    }
+    else {
+        errorLabel.innerText = errorList.lowRange;
+        errorLabel.classList.remove("display_none");
+        distanceLabel.innerHTML = "Error" + "<span></span>";
+        azimuthLabel.innerHTML = "Error" + "<span>°</span>";
+
+    }
 }
 
 function WriteResults(resultDistance, resultAzimuth) {
@@ -159,6 +196,7 @@ function WriteResults(resultDistance, resultAzimuth) {
     resultDistance = correctCoordinates;
     distanceLabel.innerHTML = resultDistance + "<span>m</span>";
     azimuthLabel.innerHTML = resultAzimuth + "<span>°</span>";
+    isFinishedFlag = true;
 }
 
 // we use this class to show best coords as possbile
@@ -166,6 +204,7 @@ function correctedDistance(distance, Artilleryobject) {
     let result = 0;
 
     let floatDistance = parseFloat(distance);
+    floatDistance = floatDistance.toFixed(1);
     const Arty = Artilleryobject;
 
     switch (Arty.artyName) {
@@ -191,6 +230,7 @@ function correctedDistance(distance, Artilleryobject) {
             // we need to split number to two parts
             let numberSpliter = floatDistance.toString();
             numberSpliter = numberSpliter.split(".");
+
             placeholder = numberSpliter;
             numberSpliter = parseInt(numberSpliter[1]);
 
