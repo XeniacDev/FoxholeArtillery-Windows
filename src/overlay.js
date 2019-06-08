@@ -259,7 +259,7 @@ function correctedDistance(distance, Artilleryobject) {
             console.log(result);
             break;
         case "Mortar":
-            //....
+            floatNumbersRounding(floatDistance);
             break;
     }
     return result;
