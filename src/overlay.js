@@ -1,3 +1,12 @@
+/*
+*
+*       FOXHOLE ARTILLERY CALCULATOR 
+*       SOURCE: http://www.foxhole-arty.com/
+*       CREATE BY [11TH GUIZMO]
+*       THANK YOU GUIZMO :P
+*/
+
+
 // get variables
 let radioSubtitle = document.getElementById("Arty_type_radio_subtitle");
 let errorLabel = document.getElementById("error_label")
@@ -26,14 +35,12 @@ friendlyAzim.onkeyup = CalcSender;
 
 // use this method for send data 
 function CalcSender() {
-    console.log(enemyDis.value);
-    console.log(friendlyDis.value);
-    console.log(enemyDis.value - friendlyDis.value);
     if(enemyDis.value != "" && enemyAzim.value != "" && friendlyDis.value != "" && friendlyAzim.value != "" ) {
         // check that values are valid or not
         if(IsValid(enemyDis.value,enemyAzim.value,friendlyDis.value,friendlyAzim.value) === true) {
+
             // if all of they were valid send data for calculation
-            artilleryCalculator(enemyDis.value, enemyAzim.value, friendlyDis.value, friendlyAzim.value)
+            calc_data(enemyDis.value,enemyAzim.value,friendlyDis.value,friendlyAzim.value);
         }
     }
 }
@@ -41,19 +48,25 @@ function CalcSender() {
 
 // Helper methods
 function convert_angle(angle) {
-	return ((angle > 360) ? angle - 360 : angle);
+    return ((angle > 360) ? angle - 360 : angle);
 }
 
 function rad(angle) {
-	return (Math.PI * angle / 180);
+    return (Math.PI * angle / 180);
 }
 
 function deg(angle) {
-	return (angle * 180 / Math.PI);
+    return (angle * 180 / Math.PI);
+}
+
+//convert user inputs to int
+function numberConverter(number) {
+    return parseInt(number);
 }
 
 // use this for data validation
 function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue) {
+
     let isValid = true;
     // Conditions
     // 1. dis === dis and azim === azim  
@@ -66,44 +79,31 @@ function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue
 }
 
 // calc coords here
-function artilleryCalculator(enemyDistance,enemyAzimuth,friendlyDistance,friendlyAzimuth) {
-    // set variables
-    let resultDistance = 0;
-    let resultAzimuth = 0;
-    let delta = 0;
-    let alpha = 0;
+function calc_data(e_dist, e_azi, f_dist, f_azi) {
+    let a_delt = 0;
+    let r_dist = 0;
+    let a_step = 0;
+    let r_azi = 0;
 
-    // Math power :) 
-    delta = (enemyAzimuth > friendlyAzimuth) ? Getradiant(enemyAzimuth - friendlyAzimuth) : Getradiant(friendlyAzimuth - enemyAzimuth);
-    // result distance
-    resultDistance = Math.sqrt(enemyDistance * enemyDistance + friendlyDistance * friendlyDistance - 2 * enemyDistance * friendlyDistance *  Math.cos(delta));
-    // get angle between person and friendly arty ( Alpha ) P and A
-    alpha = Math.round(Getdegree(Math.acos((-(enemyDistance * enemyDistance) + friendlyDistance * friendlyDistance + resultDistance * resultDistance) / (2 * friendlyDistance * resultDistance))));
-    // Conditions
-    // > 180 and < 180
-    if(angleConverter(Getdegree(delta)) > 180) {
-        resultAzimuth = (enemyAzimuth > friendlyAzimuth) ? friendlyAzimuth + 180 + alpha : friendlyAzimuth + 180 - alpha;
+    //convert user inputs to int
+    e_dist = numberConverter(e_dist);
+    e_azi = numberConverter(e_azi);
+    f_dist = numberConverter(f_dist);
+    f_azi = numberConverter(f_azi);
+
+    a_delt = (e_azi > f_azi) ? rad(e_azi - f_azi) : rad(f_azi - e_azi);
+
+    r_dist = Math.sqrt(e_dist * e_dist + f_dist * f_dist - 2 * e_dist * f_dist * Math.cos(a_delt));
+
+    a_step = Math.round(deg(Math.acos((-(e_dist * e_dist) + f_dist * f_dist + r_dist * r_dist) / (2 * f_dist * r_dist))));
+
+    if (convert_angle(deg(a_delt)) > 180) {
+        r_azi = (e_azi > f_azi) ? f_azi + 180 + a_step : f_azi + 180 - a_step;
+    } else {
+        r_azi = (e_azi > f_azi) ? f_azi + 180 - a_step : f_azi + 180 + a_step;
     }
-    else {
-        resultAzimuth = (enemyAzimuth > friendlyAzimuth) ? friendlyAzimuth + 180 - alpha : friendlyAzimuth + 180 + alpha;
-    }
-
-
-    console.log(resultDistance);
-    console.log(resultAzimuth);
+    console.log(r_azi);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // error list
 const errorList = {
