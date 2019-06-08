@@ -17,6 +17,10 @@ let enemyAzim = document.getElementById("enemyAzimuth");
 let friendlyDis = document.getElementById("friendlyDistance");
 let friendlyAzim = document.getElementById("friendlyAzimuth");
 
+// get result coordinate labels
+let distanceLabel = document.getElementById("distanceLabel");
+let azimuthLabel = document.getElementById("azimuthLabel");
+
 let radioTitle = null
 
 // use global change method to track everything
@@ -63,7 +67,7 @@ function deg(angle) {
 
 //convert user inputs to int
 function numberConverter(number) {
-    return parseInt(number);
+    return parseFloat(number);
 }
 
 function roundNumbersByFive(number) {
@@ -102,15 +106,19 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
     r_dist = Math.sqrt(e_dist * e_dist + f_dist * f_dist - 2 * e_dist * f_dist * Math.cos(a_delt));
 
     a_step = Math.round(deg(Math.acos((-(e_dist * e_dist) + f_dist * f_dist + r_dist * r_dist) / (2 * f_dist * r_dist))));
-
+    
     if (convert_angle(deg(a_delt)) > 180) {
         r_azi = (e_azi > f_azi) ? f_azi + 180 + a_step : f_azi + 180 - a_step;
     } else {
-        r_azi = (e_azi > f_azi) ? f_azi + 180 - a_step : f_azi + 180 + a_step;
+        //r_azi = (e_azi > f_azi) ? f_azi + 180 - a_step : f_azi + 180 + a_step;
+        if (e_azi > f_azi) {
+            r_azi = f_azi + 180 - a_step;
+        }
+        else {
+            r_azi = f_azi + 180 + a_step;
+        }
     }
-    console.log(radioTitle);
-    console.log(r_azi);
-    console.log(r_dist);
+    r_azi = convert_angle(Math.round(r_azi));
 
     // add result to labels
     WriteResults(r_dist, r_azi);
@@ -147,7 +155,10 @@ function WriteResults(resultDistance, resultAzimuth) {
                 artyName: radioTitle,});
             break;
     }
-    // .. check for range of arty based on artilleryRanges
+    // write the data
+    resultDistance = correctCoordinates;
+    distanceLabel.innerHTML = resultDistance + "<span>m</span>";
+    azimuthLabel.innerHTML = resultAzimuth + "<span>°</span>";
 }
 
 // we use this class to show best coords as possbile
