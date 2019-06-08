@@ -123,32 +123,27 @@ function WriteResults(resultDistance, resultAzimuth) {
     // .... after that we can access the Max and min rnage
     switch(radioTitle) {
         case "Field artillery":
-            console.log("Field artillery");
             correctedDistance(resultDistance, {
                 // send arty-type data for calculate the distance for each arty
                 artyName: radioTitle,
-                MaxRange: artilleryRanges.Fieldartillery,
-                MinRange: artilleryRanges.Fieldartillery,
-                Increament: artilleryIncreament.byOne,
-
             });
             break;
         case "Gunboat":
-            console.log("Gunboat");
-            break;
-        case "Howitzer":
-            console.log('Howitzer');
             correctedDistance(resultDistance, {
                 // send arty-type data for calculate the distance for each arty
                 artyName: radioTitle,
-                MaxRange: artilleryRanges.Fieldartillery,
-                MinRange: artilleryRanges.Fieldartillery,
-                Increament: artilleryIncreament.byOne,
-
+            });
+            break;
+        case "Howitzer":
+            correctedDistance(resultDistance, {
+                // send arty-type data for calculate the distance for each arty
+                artyName: radioTitle,
             });
             break;
         case "Mortar":
-            console.log("Mortar");
+            correctedDistance(resultDistance, {
+                // send arty-type data for calculate the distance for each arty
+                artyName: radioTitle,});
             break;
     }
     // .. check for range of arty based on artilleryRanges
@@ -158,13 +153,12 @@ function WriteResults(resultDistance, resultAzimuth) {
 function correctedDistance(distance, Artilleryobject) {
     let result = 0;
 
-    let floatDistance = 78;
+    let floatDistance = parseFloat(distance);
     const Arty = Artilleryobject;
 
     switch (Arty.artyName) {
         case "Field artillery":
         case "Gunboat":
-            console.log("Fa :D");
             let intDistance = parseInt(distance);
             // get next and previous number
             let nextNumber = ++intDistance;
@@ -178,15 +172,42 @@ function correctedDistance(distance, Artilleryobject) {
             }
             break;
         case "Howitzer":
-            result = 
-            console.log("Howi :D");
+            result = roundNumbersByFive(floatDistance);
             break;
-        
+        case "Mortar":
+            let placeholder
+            // we need to split number to two parts
+            let numberSpliter = floatDistance.toString();
+            numberSpliter = numberSpliter.split(".");
+            placeholder = numberSpliter;
+            numberSpliter = parseInt(numberSpliter[1]);
+
+            if(numberSpliter != 5) {
+                result = roundNumbersByFive(numberSpliter);
+                if (result === 10) {
+                    result = parseInt(placeholder[0]);
+                    result += 1;
+                }
+                else {
+                    if(result === 5) {
+                        // convert array to number
+                        let placeholderIntNumber = placeholder[0];
+                        console.log(placeholderIntNumber);
+                        result = parseFloat(placeholderIntNumber.concat(".",result));
+                    }
+                    else {
+                        result = parseInt(placeholder[0]);
+                    }
+                }
+            }
+            else {
+                result = floatDistance;
+            }
+            break;
     }
 
 
 }
-
 
 // error list
 const errorList = {
@@ -214,11 +235,4 @@ const artilleryRanges = {
         MinRange: 75,
         MaxRange: 150,
     }
-};
-
-// artillery increament count
-const artilleryIncreament = {
-    byHalf: 0.5,
-    byOne: 1,
-    byFive: 5,
 };
