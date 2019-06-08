@@ -142,9 +142,6 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
         }
         r_azi = convert_angle(Math.round(r_azi));
 
-        // add result to labels
-        console.log("r_dis: "+r_dist+" "+"r_azi: "+r_azi);
-
         // set global variables
         sessionStorage.setItem("globalAzimuth", r_azi);
         sessionStorage.setItem("globalDistance", r_dist);
@@ -210,16 +207,21 @@ function correctedDistance(distance, Artilleryobject) {
     switch (Arty.artyName) {
         case "Field artillery":
         case "Gunboat":
-            let intDistance = parseInt(distance);
+            let intDistance = Math.floor(floatDistance);
+            console.log(isNaN(intDistance));
             // get next and previous number
-            let nextNumber = ++intDistance;
+            let nextNumber = intDistance + 1;
+
+            console.log(floatDistance - intDistance);
 
             if((floatDistance - intDistance) < (nextNumber - floatDistance)){
                 // close to previous number
                 result = Math.floor(floatDistance);
             }
             else {
+                console.log(floatDistance);
                 result = Math.round(floatDistance);
+                console.log(result);
             }
             break;
         case "Howitzer":
@@ -244,7 +246,6 @@ function correctedDistance(distance, Artilleryobject) {
                     if(result === 5) {
                         // convert array to number
                         let placeholderIntNumber = placeholder[0];
-                        console.log(placeholderIntNumber);
                         result = parseFloat(placeholderIntNumber.concat(".",result));
                     }
                     else {
