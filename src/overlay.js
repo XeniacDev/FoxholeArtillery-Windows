@@ -66,6 +66,10 @@ function numberConverter(number) {
     return parseInt(number);
 }
 
+function roundNumbersByFive(number) {
+    return number % 5 < 3 ? (number % 5 === 0 ? number : Math.floor(number / 5) * 5) : Math.ceil(number / 5) * 5;
+}
+
 // use this for data validation
 function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue) {
 
@@ -174,7 +178,7 @@ function correctedDistance(distance, Artilleryobject) {
             }
             break;
         case "Howitzer":
-            result = floatDistance % 5 < 3 ? (floatDistance % 5 === 0 ? floatDistance : Math.floor(floatDistance / 5) * 5) : Math.ceil(floatDistance / 5) * 5;
+            result = 
             console.log("Howi :D");
             break;
         
