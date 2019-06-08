@@ -90,6 +90,40 @@ function roundNumbersByFive(number) {
     return number % 5 < 3 ? (number % 5 === 0 ? number : Math.floor(number / 5) * 5) : Math.ceil(number / 5) * 5;
 }
 
+// split float numbers to Two parts example : 112.9   -> 112 and 9 and round the number
+function floatNumbersRounding(number) {
+    let result = 0;
+    let placeholder
+    // we need to split number to two parts
+    let numberSpliter = number.toString();
+    numberSpliter = numberSpliter.split(".");
+
+    placeholder = numberSpliter;
+    numberSpliter = parseInt(numberSpliter[1]);
+
+    if (numberSpliter != 5) {
+        result = roundNumbersByFive(numberSpliter);
+        if (result === 10) {
+            result = parseInt(placeholder[0]);
+            result += 1;
+        }
+        else {
+            if (result === 5) {
+                // convert array to number
+                let placeholderIntNumber = placeholder[0];
+                result = parseFloat(placeholderIntNumber.concat(".", result));
+            }
+            else {
+                result = parseInt(placeholder[0]);
+            }
+        }
+    }
+    else {
+        result = floatDistance;
+    }
+    return result;
+}
+
 // use this for data validation
 function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue) {
 
@@ -208,54 +242,24 @@ function correctedDistance(distance, Artilleryobject) {
         case "Field artillery":
         case "Gunboat":
             let intDistance = Math.floor(floatDistance);
-            console.log(isNaN(intDistance));
             // get next and previous number
             let nextNumber = intDistance + 1;
-
-            console.log(floatDistance - intDistance);
 
             if((floatDistance - intDistance) < (nextNumber - floatDistance)){
                 // close to previous number
                 result = Math.floor(floatDistance);
             }
             else {
-                console.log(floatDistance);
                 result = Math.round(floatDistance);
-                console.log(result);
             }
             break;
         case "Howitzer":
+            console.log("yay Howitzer");
             result = roundNumbersByFive(floatDistance);
+            console.log(result);
             break;
         case "Mortar":
-            let placeholder
-            // we need to split number to two parts
-            let numberSpliter = floatDistance.toString();
-            numberSpliter = numberSpliter.split(".");
-
-            placeholder = numberSpliter;
-            numberSpliter = parseInt(numberSpliter[1]);
-
-            if(numberSpliter != 5) {
-                result = roundNumbersByFive(numberSpliter);
-                if (result === 10) {
-                    result = parseInt(placeholder[0]);
-                    result += 1;
-                }
-                else {
-                    if(result === 5) {
-                        // convert array to number
-                        let placeholderIntNumber = placeholder[0];
-                        result = parseFloat(placeholderIntNumber.concat(".",result));
-                    }
-                    else {
-                        result = parseInt(placeholder[0]);
-                    }
-                }
-            }
-            else {
-                result = floatDistance;
-            }
+            //....
             break;
     }
     return result;
