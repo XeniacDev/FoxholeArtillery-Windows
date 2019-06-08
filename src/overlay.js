@@ -119,7 +119,7 @@ function floatNumbersRounding(number) {
         }
     }
     else {
-        result = floatDistance;
+        result = number;
     }
     return result;
 }
