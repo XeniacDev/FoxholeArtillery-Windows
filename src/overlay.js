@@ -36,7 +36,10 @@ document.addEventListener("change",() => {
     radioSubtitle.innerText = radioTitle;
     // after a change we should call calc function for refresh ( maxRange minRange for each Arty need to be refresh)
 
-    console.log(enemyDis.value);
+    let globalAzimuth;
+    let globalDistance;
+    globalAzimuth = sessionStorage.getItem("globalAzimuth");
+    globalDistance = sessionStorage.getItem("globalDistance");
 
     if(enemyDis.value != "" || enemyAzim.value != "" || friendlyDis.value != "" || friendlyAzim.value != "") {
         errorLabel.classList.add("display_none");
@@ -135,6 +138,7 @@ function targetRangeChecker(correctCoords, artilleryType) {
     if(correctCoords > ranges.MaxRange || correctCoords < ranges.MinRange) {
         result = true;
         errorLabel.classList.remove("display_none");
+        errorLabel.classList.remove("green_color");
         distanceLabel.classList.add("red_color");
         if(correctCoords > ranges.MaxRange) {
             errorLabel.innerText = errorList.farTarget;
@@ -144,8 +148,10 @@ function targetRangeChecker(correctCoords, artilleryType) {
         }
     }
     else {
-        errorLabel.classList.add("display_none");
+        // errorLabel.classList.add("display_none");
         distanceLabel.classList.remove("red_color");
+        errorLabel.classList.add("green_color");
+        errorLabel.innerText = errorList.happyHunting;
     }
     return result;
 }
@@ -306,6 +312,7 @@ const errorList = {
     farTarget: "Target is too far",
     sameCoords: "Coordinates must not be the same.",
     lowRange: "distance can't be less than 45m",
+    happyHunting: "Happy hunting",
 }
 
 // Arty ranges
