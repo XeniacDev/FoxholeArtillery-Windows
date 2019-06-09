@@ -1,3 +1,4 @@
+const { clipboard } = require('electron');
 /*
 *
 *       FOXHOLE ARTILLERY CALCULATOR 
@@ -26,8 +27,13 @@ let friendlyAzim = document.getElementById("friendlyAzimuth");
 let distanceLabel = document.getElementById("distanceLabel");
 let azimuthLabel = document.getElementById("azimuthLabel");
 
+// clipboard button
+let clipBoardBtn = document.getElementById("clipBoardBtn");
+
 
 let radioTitle = null
+
+clipBoardBtn.addEventListener("click", ClipBoard);
 
 // use global change method to track everything
 document.addEventListener("change",() => {
@@ -277,6 +283,13 @@ function WriteResults(resultDistance, resultAzimuth) {
         resultDistance = correctCoordinates;
         distanceLabel.innerHTML = resultDistance + "<span>m</span>";
         azimuthLabel.innerHTML = resultAzimuth + "<span>°</span>";
+
+        // set global variables
+        sessionStorage.setItem("resultAzimuth_", resultAzimuth);
+        sessionStorage.setItem("resultDistance_", resultDistance);
+
+        // copy to clipboard
+        clipBoardBtn.addEventListener("click", ClipBoard);
         isFinishedFlag = true;
 }
 
@@ -321,6 +334,8 @@ const errorList = {
     sameCoords: "Coordinates must not be the same.",
     lowRange: "distance can't be less than 45m",
     happyHunting: "Happy hunting",
+    cantCopy: "There're no coords for copying",
+    canCopy: "Copied to clipboard"
 }
 
 // Arty ranges
@@ -342,3 +357,27 @@ const artilleryRanges = {
         MaxRange: 150,
     }
 };
+
+function ClipBoard() {
+    errorLabel.classList.remove("display_none");
+    if (isFinishedFlag === true) {
+        // copy to clipBoard
+        // we have coords 
+        let resultAzimuth_;
+        let resultDistance_;
+
+        resultAzimuth_ = sessionStorage.getItem("resultAzimuth_");
+        resultDistance_ = sessionStorage.getItem("resultDistance_");
+        clipboard.writeText("Distance: " + resultDistance_ + "  Azimuth: " + resultAzimuth_);
+        errorLabel.classList.add("green_color");
+        errorLabel.classList.remove("red_color")
+        errorLabel.innerText = errorList.canCopy;
+    }
+    else {
+        // error !
+        // there nothing to copy
+        errorLabel.classList.remove("green_color");
+        errorLabel.classList.add("red_color")
+        errorLabel.innerText = errorList.cantCopy;
+    }
+}
