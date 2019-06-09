@@ -36,15 +36,19 @@ document.addEventListener("change",() => {
     radioSubtitle.innerText = radioTitle;
     // after a change we should call calc function for refresh ( maxRange minRange for each Arty need to be refresh)
 
-    let globalAzimuth;
-    let globalDistance;
-    globalAzimuth = sessionStorage.getItem("globalAzimuth");
-    globalDistance = sessionStorage.getItem("globalDistance");
+    console.log(enemyDis.value);
 
-    if(isFinishedFlag === true) {
-        //send new data for calculation
-        // distance - azimuth - arty name
-        WriteResults(globalDistance, globalAzimuth);
+    if(enemyDis.value != "" || enemyAzim.value != "" || friendlyDis.value != "" || friendlyAzim.value != "") {
+        errorLabel.classList.add("display_none");
+        if (isFinishedFlag === true) {
+            //send new data for calculation
+            // distance - azimuth - arty name
+            WriteResults(globalDistance, globalAzimuth);
+        }
+    }
+    else {
+        errorLabel.classList.remove("display_none");
+        errorLabel.innerText = errorList.emptyFields;
     }
 });
 
