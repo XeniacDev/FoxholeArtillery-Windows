@@ -6,7 +6,8 @@
 *       THANK YOU GUIZMO :P
 */
 let isFinishedFlag = false;
-
+sessionStorage.setItem("globalAzimuth", 0);
+sessionStorage.setItem("globalDistance", 0);
 
 
 
@@ -36,13 +37,14 @@ document.addEventListener("change",() => {
     radioSubtitle.innerText = radioTitle;
     // after a change we should call calc function for refresh ( maxRange minRange for each Arty need to be refresh)
 
+    errorLabel.classList.remove("green_color");
+    errorLabel.classList.add("red_color");
     let globalAzimuth;
     let globalDistance;
     globalAzimuth = sessionStorage.getItem("globalAzimuth");
     globalDistance = sessionStorage.getItem("globalDistance");
 
-    if(enemyDis.value != "" || enemyAzim.value != "" || friendlyDis.value != "" || friendlyAzim.value != "") {
-        errorLabel.classList.add("display_none");
+    if((enemyDis.value != "" || enemyAzim.value != "" || friendlyDis.value != "" || friendlyAzim.value != "")) {
         if (isFinishedFlag === true) {
             //send new data for calculation
             // distance - azimuth - arty name
@@ -52,6 +54,7 @@ document.addEventListener("change",() => {
     else {
         errorLabel.classList.remove("display_none");
         errorLabel.innerText = errorList.emptyFields;
+
     }
 });
 
@@ -70,6 +73,12 @@ function CalcSender() {
 
             // if all of they were valid send data for calculation
             calc_data(enemyDis.value,enemyAzim.value,friendlyDis.value,friendlyAzim.value);
+        }
+        else {
+            errorLabel.classList.remove("display_none");
+            errorLabel.innerText = errorList.sameCoords;
+            distanceLabel.innerHTML = "Error" + "<span></span>";
+            azimuthLabel.innerHTML = "Error" + "<span>°</span>";
         }
     }
 }
@@ -164,10 +173,6 @@ function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue
     // 1. dis === dis and azim === azim  
     if((enemyDisValue === friendlyDisValue && enemyAzimValue === friendlyAzimValue)) {
         isValid = false;
-        errorLabel.textContent = errorList.sameCoords;
-        errorLabel.classList.remove("display_none");
-        distanceLabel.innerHTML = "Error" + "<span></span>";
-        azimuthLabel.innerHTML = "Error" + "<span>°</span>";
     }
     // more errors if we need :)
     return isValid;
@@ -175,7 +180,6 @@ function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue
 
 // calc coords here
 function calc_data(e_dist, e_azi, f_dist, f_azi) {
-    errorLabel.classList.add("display_none");
     let a_delt = 0;
     let r_dist = 0;
     let a_step = 0;
@@ -191,7 +195,9 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
 
     r_dist = Math.sqrt(e_dist * e_dist + f_dist * f_dist - 2 * e_dist * f_dist * Math.cos(a_delt));
 
-    if(r_dist >= 45) {
+    if(r_dist >= 45 && e_dist != 0) {
+        errorLabel.classList.add("display_none");
+        console.log("hello!!!!");
             a_step = Math.round(deg(Math.acos((-(e_dist * e_dist) + f_dist * f_dist + r_dist * r_dist) / (2 * f_dist * r_dist))));
 
             if (convert_angle(deg(a_delt)) > 180) {
@@ -218,8 +224,10 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
 
     }
     else {
+        isFinishedFlag = false;
         errorLabel.innerText = errorList.lowRange;
         errorLabel.classList.remove("display_none");
+        distanceLabel.classList.remove("red_color");
         distanceLabel.innerHTML = "Error" + "<span></span>";
         azimuthLabel.innerHTML = "Error" + "<span>°</span>";
 

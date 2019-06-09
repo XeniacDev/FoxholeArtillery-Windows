@@ -182,6 +182,11 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 10px;
 }
 
+.coordinate_box {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 .coordinate_box:not(:first-child) {
     margin-left: 20px;
 }
