@@ -124,6 +124,28 @@ function floatNumbersRounding(number) {
     return result;
 }
 
+// target range checker 
+function targetRangeChecker(correctCoords, artilleryType) {
+    let ranges = artilleryType;
+    let result = false;
+    if(correctCoords > ranges.MaxRange || correctCoords < ranges.MinRange) {
+        result = true;
+        errorLabel.classList.remove("display_none");
+        distanceLabel.classList.add("red_color");
+        if(correctCoords > ranges.MaxRange) {
+            errorLabel.innerText = errorList.farTarget;
+        }
+        else if(correctCoords < ranges.MinRange) {
+            errorLabel.innerText = errorList.closeTarget;
+        }
+    }
+    else {
+        errorLabel.classList.add("display_none");
+        distanceLabel.classList.remove("red_color");
+    }
+    return result;
+}
+
 // use this for data validation
 function IsValid(enemyDisValue,enemyAzimValue,friendlyDisValue,friendlyAzimValue) {
 
@@ -180,8 +202,10 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
         sessionStorage.setItem("globalAzimuth", r_azi);
         sessionStorage.setItem("globalDistance", r_dist);
 
+        // check if dis is higher than maxRange || minRange 
+        // .. 
         WriteResults(r_dist, r_azi);
-        global = r_dist;
+
     }
     else {
         errorLabel.innerText = errorList.lowRange;
@@ -193,47 +217,54 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
 }
 
 function WriteResults(resultDistance, resultAzimuth) {
+
+    errorLabel.classList.remove("display_none");
     let correctCoordinates = 0;
     // .. save R_dis by one floating point
     // .. check for how increase distance
     // .... first we need to know what type of arty is checked right now
     // .... after that we can access the Max and min rnage
-    switch(radioTitle) {
+    // .... check for maxRange and minRange errors
+    switch (radioTitle) {
         case "Field artillery":
             correctCoordinates = correctedDistance(resultDistance, {
                 // send arty-type data for calculate the distance for each arty
                 artyName: radioTitle,
             });
+            targetRangeChecker(correctCoordinates, artilleryRanges.Fieldartillery);
             break;
         case "Gunboat":
             correctCoordinates = correctedDistance(resultDistance, {
                 // send arty-type data for calculate the distance for each arty
                 artyName: radioTitle,
             });
+            targetRangeChecker(correctCoordinates, artilleryRanges.Gunboat);
             break;
         case "Howitzer":
             correctCoordinates = correctedDistance(resultDistance, {
-                // send arty-type data for calculate the distance for each arty
-                artyName: radioTitle,
+            // send arty-type data for calculate the distance for each arty
+            artyName: radioTitle,
             });
+            targetRangeChecker(correctCoordinates, artilleryRanges.Howitzer);
             break;
         case "Mortar":
             correctCoordinates = correctedDistance(resultDistance, {
                 // send arty-type data for calculate the distance for each arty
-                artyName: radioTitle,});
+                artyName: radioTitle,
+            });
+            targetRangeChecker(correctCoordinates, artilleryRanges.Mortar);
             break;
-    }
-    // write the data
-    resultDistance = correctCoordinates;
-    distanceLabel.innerHTML = resultDistance + "<span>m</span>";
-    azimuthLabel.innerHTML = resultAzimuth + "<span>°</span>";
-    isFinishedFlag = true;
+        }
+        // write the data
+        resultDistance = correctCoordinates;
+        distanceLabel.innerHTML = resultDistance + "<span>m</span>";
+        azimuthLabel.innerHTML = resultAzimuth + "<span>°</span>";
+        isFinishedFlag = true;
 }
 
 // we use this class to show best coords as possbile
 function correctedDistance(distance, Artilleryobject) {
     let result = 0;
-
     let floatDistance = parseFloat(distance);
     floatDistance = floatDistance.toFixed(1);
     const Arty = Artilleryobject;
@@ -267,26 +298,27 @@ function correctedDistance(distance, Artilleryobject) {
 // error list
 const errorList = {
     emptyFields: "Fields can not be empty",
-    closeTarget: "Target is too close to artillery ",
+    closeTarget: "Target is too close",
+    farTarget: "Target is too far",
     sameCoords: "Coordinates must not be the same.",
     lowRange: "distance can't be less than 45m",
 }
 
 // Arty ranges
 const artilleryRanges = {
-    Mortar: {
+    "Mortar": {
         MinRange: 45,
         MaxRange: 65,
     },
-    Howitzer: {
+    "Howitzer": {
         MinRange: 75,
         MaxRange: 150,
     },
-    Gunboat: {
+    "Gunboat": {
         MinRange: 50,
         MaxRange: 100,
     },
-    Fieldartillery: {
+    "Fieldartillery": {
         MinRange: 75,
         MaxRange: 150,
     }
