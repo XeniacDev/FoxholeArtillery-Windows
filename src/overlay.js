@@ -1,4 +1,4 @@
-const { clipboard } = require('electron');
+const { clipboard, ipcRenderer } = require('electron');
 /*
 *
 *       FOXHOLE ARTILLERY CALCULATOR 
@@ -9,6 +9,9 @@ const { clipboard } = require('electron');
 let isFinishedFlag = false;
 sessionStorage.setItem("globalAzimuth", 0);
 sessionStorage.setItem("globalDistance", 0);
+
+
+
 
 
 

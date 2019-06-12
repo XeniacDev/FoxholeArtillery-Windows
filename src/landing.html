@@ -32,11 +32,9 @@
         <div id="status-menu">
             <div id="status-menu__icons">
                 <div class="statusBtn" id="information">
-                    <img src="../assets/images/information.svg">
+                    <img src="../assets/images/information.svg" id="FoxholeArtilleryWiki">
                 </div>
-                <div class="statusBtn" id="update">
-                    <img src="../assets/images/update.svg">
-                </div>
+                <div class="statusBtn" id="update"></div>
             </div>
         </div>
 
@@ -47,35 +45,15 @@
                 <div class="app-startup-information">
                     <p class="header">What do you need for start</p>
                     <div class="status-text">
-                        <div class="status-text-image">
-                            <img src="../assets/images/passed.png"  id="status-text-passed" />
-                        </div>
-                        <p class="status-description">Foxhole Windowed Fullscreen mod</p>
+                        <p class="status-description">- Foxhole Windowed Fullscreen mod, if you want see this on top of game</p>
                     </div>
-                    <div class="status-text">
-                        <div class="status-text-image">
-                            <img src="../assets/images/error.svg" id="status-text-passed" />
-                        </div>
-                        <p class="status-description">Run the steam and start the game</p>
-                        <span class="status-text-autoFix" id="autoFix">auto fix</span>
-                    </div>
-                    <button id="startTheGameBtn">Start the game</button>
-                </div>
-                <div class="update-changelog">
-                    <p class="header">Update <span id="AppVersion">1.0.0</span> change log</p>
-                    <div class="updateLogs">
-                        <li>Release the app. Yay !!</li>
-                        <li>Fix some bugs</li>
-                    </div>
+                    <button id="startTheGameBtn" class="disabled">Open the overlay</button>
                 </div>
                 <div class="community-accounts">
                     <p class="header">Community</p>
                     <div class="row-display-flex" id="icon_containers">
-                        <div class="icon-box icon-box--red">
-                            <img src="../assets/images/github-logo.svg">
-                        </div>
-                        <div class="icon-box icon-box--purple">
-                            <img src="../assets/images/Discord-Logo-White.svg">
+                        <div class="icon-box icon-box--red" id="githubBtn">
+                            <img src="../assets/images/github-logo.svg" title="github">
                         </div>
                     </div>
                 </div>

@@ -5,25 +5,32 @@
 
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow} = require('electron')
 require('electron-reload')(__dirname);
+const nativeImage = require('electron').nativeImage;
+
+const ipc_main = require("electron").ipcMain;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let landing
+var appIcon = nativeImage.createFromPath("/assets/images/icon.png");
 
 function createWindow() {
     // Create the browser window.
     landing = new BrowserWindow({
-        width: 865,
+        width: 600,
         height: 580,
         webPreferences: {
             nodeIntegration: true
         },
         resizable: false,
         frame: false,
-        show: false
+        show: false,
+        icon: __dirname + "assets/images/icon.png",
     })
+
+    landing.setOverlayIcon(appIcon,"Foxhole Artillery");
 
     // and load the index.html of the app.
     landing.loadFile('src/landing.html')
@@ -49,6 +56,7 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.disableHardwareAcceleration();
+
 app.on('ready', createWindow)
 
 // Quit when all windows are closed.
@@ -66,3 +74,30 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+let isClosed = false;
+// get startTheGameBtn
+
+console.log("send");
+ipc_main.on("ClosedEvent", (event) => {
+    isClosed = true;
+    console.log("isClosed from overlay");
+    landing.webContents.executeJavaScript(`
+        document.getElementById("startTheGameBtn").disabled = false
+      `)
+})
+
+
+ipc_main.on("landingClosed", (event, args) => {
+    ipc_main.setMaxListeners(1);
+    console.log("hello");
+    // if sender true ipc main send data to landing
+    if (isClosed === true) {
+        console.log("reading isclosed !!!")
+        event.sender.send("landingClosed", true);
+    }
+    landing.webContents.executeJavaScript(`
+        document.getElementById("startTheGameBtn").disabled = true
+      `)
+    isClosed = false;
+})

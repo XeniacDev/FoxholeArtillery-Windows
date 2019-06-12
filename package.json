@@ -15,6 +15,7 @@
     "electron": "^5.0.2"
   },
   "dependencies": {
+    "diskinfo": "0.0.3",
     "electron-reload": "^1.4.0"
   }
 }

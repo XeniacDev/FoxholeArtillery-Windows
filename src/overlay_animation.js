@@ -1,16 +1,21 @@
 // require electron remote window for closing the current view
 const overlayRemote = require("electron").remote;
 
+const ipc_renderer = require("electron").ipcRenderer;
+
 let openOverlay = document.getElementById("openOverlay");
 let overlayBox = document.getElementById("overlayBox");
 let overlayContent = document.getElementById("overlay_content");
 let overlayWallpaper = document.getElementById("overlay_wallpaper");
 let overlayBtn = document.getElementById("overlay_max_btn_content");
 
+
+
 overlayContent.style.opacity = 0;
 
 // we use this flag for form;
 let IsOpened = false;
+// let IsClosed = false;
 
 openOverlay.addEventListener("click",() => {
     // 1. open the overlay container
@@ -69,46 +74,11 @@ overlayBtn.addEventListener("click", () => {
     }
     else {
         // 3. else close the entire overlay thread
+        ipc_renderer.send("ClosedEvent");
+        IsClosed = true;
         let overlayRemoteHandler = overlayRemote.getCurrentWindow();
+        ipc_renderer.removeAllListeners("ClosedEvent");
         overlayRemoteHandler.close();
     }
 })
 overlayContent.classList.remove("display_none");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Arty types Dic
-const artilleryType = {
-    Fa: "Field Artillery",
-    Gb: "Gun boat",
-    Howi: "Howitzer",
-    Mor: "Mortar"
-}
