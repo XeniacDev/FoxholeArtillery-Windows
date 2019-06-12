@@ -72,7 +72,8 @@ function createOverlay() {
         resizable: false,
         webPreferences: {
             nodeIntegration: true,
-        }
+        },
+        icon: __dirname + "/assets/images/icon.png",
     });
 
     // set our window on top of bordless windowed games

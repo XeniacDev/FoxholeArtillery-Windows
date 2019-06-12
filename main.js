@@ -27,7 +27,7 @@ function createWindow() {
         resizable: false,
         frame: false,
         show: false,
-        icon: __dirname + "assets/images/icon.png",
+        icon: __dirname + "/assets/images/icon.png",
     })
 
     landing.setOverlayIcon(appIcon,"Foxhole Artillery");
