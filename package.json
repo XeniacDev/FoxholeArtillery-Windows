@@ -4,17 +4,25 @@
   "description": "A simplistic calculator for using howitzers, field artillery, gunboats, and mortars. Simply click which weapon you're using then input the dist/azm from yourself to the weapon, then the dist/azm to the target and an accurate firing solution will be displayed.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "build"
   },
   "keywords": [
-    "foxhole"
+    "foxhole",
+    "artillery"
   ],
   "author": "Mahdi fakhr",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^5.0.2"
-  },
-  "dependencies": {
+    "electron": "^5.0.2",
+    "electron-builder": "^20.43.0",
     "electron-reload": "^1.4.0"
+  },
+  "build": {
+    "appId": "com.xeniac.Foxhole Artillery",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/images/icon.ico"
+    }
   }
 }

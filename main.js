@@ -6,7 +6,7 @@
 
 // Modules to control application life and create native browser window
 const { app, BrowserWindow} = require('electron')
-require('electron-reload')(__dirname);
+//require('electron-reload')(__dirname);
 const nativeImage = require('electron').nativeImage;
 
 const ipc_main = require("electron").ipcMain;
@@ -22,7 +22,8 @@ function createWindow() {
         width: 600,
         height: 580,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            //devTools: false
         },
         resizable: false,
         frame: false,
@@ -82,15 +83,15 @@ console.log("send");
 ipc_main.on("ClosedEvent", (event) => {
     isClosed = true;
     console.log("isClosed from overlay");
+
     landing.webContents.executeJavaScript(`
         document.getElementById("startTheGameBtn").disabled = false
-      `)
+    `)
 })
 
 
 ipc_main.on("landingClosed", (event, args) => {
     ipc_main.setMaxListeners(1);
-    console.log("hello");
     // if sender true ipc main send data to landing
     if (isClosed === true) {
         console.log("reading isclosed !!!")
@@ -100,4 +101,8 @@ ipc_main.on("landingClosed", (event, args) => {
         document.getElementById("startTheGameBtn").disabled = true
       `)
     isClosed = false;
+})
+
+ipc_main.on("closeApp", (event,args) => {
+    app.quit();
 })
