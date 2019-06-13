@@ -21,8 +21,11 @@
   "build": {
     "appId": "com.xeniac.Foxhole Artillery",
     "win": {
-      "target": "nsis",
+      "target": "portable",
       "icon": "assets/images/icon.ico"
+    },
+    "portable": {
+      "artifactName": "FoxholeArtillery_portable.exe"
     }
   }
 }
