@@ -1,3 +1,7 @@
+### Download the app from [here](https://irxeniac.github.io/FoxholeArtillery-Windows/)
+
+***
+
 # Foxhole Artillery
 A simplistic calculator for using howitzers, field artillery, gunboats, and mortars. Simply click which weapon you're using then input the dist/azm from yourself to the weapon, then the dist/azm to the target and an accurate firing solution will be displayed.
 
@@ -32,3 +36,4 @@ You must change the game settings.
 
 ***
 ### if you find a bug, please report it from [here](https://github.com/irxeniac/FoxholeArtillery-Windows/issues)
+### Download the app from [here](https://irxeniac.github.io/FoxholeArtillery-Windows/)
