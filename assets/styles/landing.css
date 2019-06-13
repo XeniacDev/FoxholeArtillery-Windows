@@ -245,6 +245,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(1.3);
+    transition: visibility 0s, opacity 0.2s, transform 0.2s;
+}
+
+.bg-active {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.bg-nactive {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(1.3);
 }
 
 .modal {

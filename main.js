@@ -23,7 +23,7 @@ function createWindow() {
         height: 580,
         webPreferences: {
             nodeIntegration: true,
-            //devTools: false
+            devTools: false
         },
         resizable: false,
         frame: false,
@@ -35,9 +35,6 @@ function createWindow() {
 
     // and load the index.html of the app.
     landing.loadFile('src/landing.html')
-
-    // Open the DevTools.
-    landing.webContents.openDevTools()
 
     // Emitted when the window is closed.
     landing.on('closed', function () {

@@ -72,7 +72,7 @@ function createOverlay() {
         resizable: false,
         webPreferences: {
             nodeIntegration: true,
-            //devTools: false
+            devTools: false
         },
         icon: __dirname + "/assets/images/icon.png",
     });

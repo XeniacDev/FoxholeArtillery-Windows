@@ -18,23 +18,24 @@ minimize.addEventListener("click", (event) => {
 })
 
 close = document.getElementById("close");
-close.addEventListener("click", (event) => {
-    event.preventDefault()
-    let options = {}
-    options.buttons = ["&Yes", "&No"]
-    options.message = "Do you really want to quit?"
+modalBg = document.querySelector(".modal-bg");
+ModalCancel = document.getElementById("ModalCancel");
+AppClose = document.getElementById("AppClose");
 
-    dialog.showMessageBox(WIN, options, (res, checked) => {
-        console.log(res)
-        console.log(checked)
-        if (res === 0)
-        // send a message to main for close the app
-        ipc_renderer.send("closeApp");
-    })
+
+close.addEventListener("click", (event) => {
+    modalBg.classList.add("bg-active");
 })
 
+ModalCancel.addEventListener("click", closeModal);
+modalBg.addEventListener("click", closeModal);
+AppClose.addEventListener("click", () => {
+    ipc_renderer.send("closeApp");
+})
 
-//renderer.js - the renderer process
+function closeModal() {
+    modalBg.classList.remove("bg-active");
+}
 
 
 
