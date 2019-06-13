@@ -11,7 +11,7 @@ You must change the game settings.
 
 ***
 
-![change foxhole settings](http://s5.picofile.com/file/8363465192/settingChange.PNG)
+![change foxhole settings](http://s3.picofile.com/file/8363467126/settingChange.PNG)
 
 # How use this
 ### - First download the app you can dowload latest version [here](https://github.com/irxeniac/FoxholeArtillery-Windows/releases)
