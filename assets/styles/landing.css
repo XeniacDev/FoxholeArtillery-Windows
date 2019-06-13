@@ -232,3 +232,64 @@
 #icon_containers>div {
     margin-right: 15px;
 }
+
+
+/* modal */
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.53);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 350px;
+    height: 170px;
+    background: #191919;
+    padding: 20px 15px 15px 30px;
+    border-radius: 5px;
+}
+
+.modal-header {
+    font-size: 14px;
+    color: white;
+}
+
+.modal-subtitle {
+    color: #444444;
+    font-size: 12px;
+}
+
+.buttons button {
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 55px;
+    color: white;
+    padding: 13px 15px;
+    border-radius: 5px;
+    margin-right: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.buttons .button-black {
+    background: #121212
+}
+
+.buttons .button-red {
+    background: #ff4848
+}
+
+.buttons .button-black:hover {
+    background: #0b0b0b
+}
+
+.buttons .button-red:hover {
+    background: #ff3939
+}
