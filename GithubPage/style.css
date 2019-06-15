@@ -161,3 +161,18 @@ body {
     color: white;
     margin-left: 10px;
 }
+
+
+
+footer {
+    margin-top: 100px;
+    text-align: center;
+}
+
+h3.alarm {
+    font-weight: lighter;
+}
+
+h3.alarm span {
+    color: #7289da;
+}
