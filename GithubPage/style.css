@@ -27,7 +27,7 @@ li {
 }
 
 body {
-    background: url(OverlayWallpaper.png) no-repeat ,#191919;
+    background: url(OverlayWallpaper.png) no-repeat, #191919;
     background-size: cover;
     color: white;
 }
@@ -71,6 +71,7 @@ body {
 
 .buttons {
     margin: 70px 0 0 0;
+    position: relative;
 
 }
 
@@ -118,6 +119,18 @@ body {
 
 .button:hover .text_fileSize::after {
     transform: translateX(0);
+}
+
+.Suggested_text {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    z-index: 99;
+    font-size: 12px;
+    background: #ff4848;
+    padding: 3px 7px;
+    border-radius: 5000px;
+    letter-spacing: 2px;
 }
 
 .button:hover {
