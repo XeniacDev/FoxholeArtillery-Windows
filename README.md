@@ -1,5 +1,6 @@
 ### Download the app from [here](https://irxeniac.github.io/FoxholeArtillery-Windows/)
-
+***
+### if Windows defender blocks this app, dont worry! That's because this app dont have Microsoft Authenticode Code Signing
 ***
 
 # Foxhole Artillery
