@@ -298,6 +298,7 @@ function WriteResults(resultDistance, resultAzimuth) {
 
 // we use this class to show best coords as possbile
 function correctedDistance(distance, Artilleryobject) {
+    console.log("distance is: " + distance);
     let result = 0;
     let floatDistance = parseFloat(distance);
     floatDistance = floatDistance.toFixed(1);
@@ -338,7 +339,11 @@ const errorList = {
     lowRange: "distance can't be less than 45m",
     happyHunting: "Happy hunting",
     cantCopy: "There're no coords for copying",
-    canCopy: "Copied to clipboard"
+    canCopy: "Copied to clipboard",
+    AppCrash: "App crashed, Check your app log in %folderPath%",
+    AppClosed: "Your app Closed, Check your log",
+    SomethingIsWrong: "Something is Wrong, please try again late",
+    
 }
 
 // Arty ranges
