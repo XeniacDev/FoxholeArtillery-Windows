@@ -117,6 +117,9 @@ function roundNumbersByFive(number) {
 
 // split float numbers to Two parts example : 112.9   -> 112 and 9 and round the number
 function floatNumbersRounding(number) {
+
+    console.log("from floatnumberRoanding: " +number);
+
     let result = 0;
     let placeholder
     // we need to split number to two parts
@@ -126,6 +129,9 @@ function floatNumbersRounding(number) {
     placeholder = numberSpliter;
     numberSpliter = parseInt(numberSpliter[1]);
 
+
+    console.log("float section is:y " + numberSpliter);
+    
     if (numberSpliter != 5) {
         result = roundNumbersByFive(numberSpliter);
         if (result === 10) {
@@ -136,6 +142,7 @@ function floatNumbersRounding(number) {
             if (result === 5) {
                 // convert array to number
                 let placeholderIntNumber = placeholder[0];
+                console.log(typeof placeholderIntNumber);
                 result = parseFloat(placeholderIntNumber.concat(".", result));
             }
             else {
@@ -206,7 +213,6 @@ function calc_data(e_dist, e_azi, f_dist, f_azi) {
 
     if(r_dist >= 45 && e_dist != 0) {
         errorLabel.classList.add("display_none");
-        console.log("hello!!!!");
             a_step = Math.round(deg(Math.acos((-(e_dist * e_dist) + f_dist * f_dist + r_dist * r_dist) / (2 * f_dist * r_dist))));
 
             if (convert_angle(deg(a_delt)) > 180) {
@@ -298,7 +304,6 @@ function WriteResults(resultDistance, resultAzimuth) {
 
 // we use this class to show best coords as possbile
 function correctedDistance(distance, Artilleryobject) {
-    console.log("distance is: " + distance);
     let result = 0;
     let floatDistance = parseFloat(distance);
     floatDistance = floatDistance.toFixed(1);

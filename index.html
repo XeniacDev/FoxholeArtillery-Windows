@@ -1,1 +1,219 @@
-<meta http-equiv="refresh" content="0; url=https://irxeniac.github.io/FoxholeArtillery-Windows/GithubPage/index.html">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Foxhole Artillery</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="header">Foxhole Artillery</h1>
+            <p class="version">current version: 1.0.1</p>
+            <main class="content">
+                <div class="box download">
+                    <h3 class="text_header">Download latest app:</h3>
+                    <div class="buttons">
+                        <span class="Suggested_text">SUGGESTED</span>
+                        <a href="https://github.com/irxeniac/FoxholeArtillery-Windows/releases/download/1.0.1/FoxholeArtillery_portable.exe" class="button">
+                            <p class="text_button">Foxhole Artillery Portable</p>
+                            <span class="text_fileSize">42.6mb</span>
+                        </a>
+                        <a href="https://github.com/irxeniac/FoxholeArtillery-Windows/releases/download/1.0.1/foxholeartillery.Setup.1.0.1.exe" class="button">
+                            <p class="text_button">Foxhole Artillery Installer</p>
+                            <span class="text_fileSize">48.6mb</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="box community">
+                    <h3 class="text_header">Resources:</h3>
+                    <div class="links_content">
+                        <li><a target="_blank" href="https://github.com/irxeniac/FoxholeArtillery-Windows/wiki/How-use-this-app">How use this app ?</a></li>
+                        <li><a target="_blank" href="https://github.com/irxeniac/FoxholeArtillery-Windows/releases">Release page</a></li>
+                        <li><a target="_blank" href="https://github.com/irxeniac/FoxholeArtillery-Windows">Source code</a></li>
+                        <li><a target="_blank" href="https://github.com/irxeniac/FoxholeArtillery-Windows/issues">Report a bug</a></li>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <h3 class="alarm">if <span>Windows defender</span> blocks this app, dont worry! That's because this app dont have Microsoft Authenticode Code Signing</h3>
+            </footer>
+        </div>
+    </body>
+</html>
+
+<style>
+    @font-face {
+        font-family: "Calibri";
+        src: url("./GithubPage/Calibri.woff2") format("woff2"), url("./GithubPage/Calibri.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    body {
+        background: url("./GithubPage/OverlayWallpaper.png") no-repeat, #191919;
+        background-size: cover;
+        color: white;
+    }
+
+    .container {
+        font-family: "Calibri";
+        width: 1200px;
+        height: 100%;
+        margin: 100px auto;
+    }
+
+    .header {
+        color: white;
+        text-align: center;
+        font-weight: lighter;
+    }
+
+    .text_header {
+        color: white;
+        font-weight: lighter;
+    }
+
+    .version {
+        color: #7f7f7f;
+        text-align: center;
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .box {
+        padding: 30px;
+    }
+
+    .content .download {
+        flex: 4;
+        border-right: 1px solid #444444;
+    }
+
+    .buttons {
+        margin: 70px 0 0 0;
+        position: relative;
+    }
+
+    .button {
+        padding: 25px 15px;
+        background: #121212;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        margin: 10px 0 0 0;
+        width: 55%;
+    }
+
+    .button .text_button {
+        font-size: 14px;
+        color: #b3b3b3;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .button .text_fileSize {
+        font-size: 12px;
+        color: #444444;
+        transition: color 0.2s ease-in-out, margin-right 0.7s cubic-bezier(0.74, 0.1, 0.31, 0.92);
+    }
+
+    .text_fileSize::after {
+        content: "\00bb";
+        position: absolute;
+        right: 10px;
+        top: 12px;
+        font-size: 30px;
+        transform: translateX(30px);
+        transition: 0.5s cubic-bezier(0.74, 0.1, 0.31, 0.92);
+        color: white;
+    }
+
+    .button:hover .text_fileSize {
+        color: white;
+        margin-right: 20px;
+    }
+
+    .button:hover .text_button {
+        color: white;
+    }
+
+    .button:hover .text_fileSize::after {
+        transform: translateX(0);
+    }
+
+    .Suggested_text {
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        z-index: 99;
+        font-size: 12px;
+        background: #ff4848;
+        padding: 3px 7px;
+        border-radius: 5000px;
+        letter-spacing: 2px;
+    }
+
+    .button:hover {
+        background: #4565ae;
+    }
+
+    .content .community {
+        flex: 1;
+    }
+
+    .links_content {
+        margin: 50px 0 0 0;
+    }
+
+    .links_content li {
+        list-style: square;
+        color: #5d5d5d;
+        margin: 10px;
+    }
+
+    .links_content li a {
+        transition: 0.4s ease;
+    }
+
+    .links_content li:hover a {
+        color: white;
+        margin-left: 10px;
+    }
+
+    footer {
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    h3.alarm {
+        font-weight: lighter;
+    }
+
+    h3.alarm span {
+        color: #7289da;
+    }
+</style>
