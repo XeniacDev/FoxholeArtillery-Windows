@@ -1,4 +1,4 @@
-### Download the app from [here](https://irxeniac.github.io/FoxholeArtillery-Windows/)
+### Download the app from [here](https://xeniacdev.github.io/FoxholeArtillery-Windows/)
 ***
 ### if Windows defender blocks this app, dont worry! That's because this app dont have Microsoft Authenticode Code Signing
 ***
@@ -19,7 +19,7 @@ You must change the game settings.
 ![change foxhole settings](http://s3.picofile.com/file/8363467126/settingChange.PNG)
 
 # How use this
-### - First download the app you can dowload latest version [here](https://github.com/irxeniac/FoxholeArtillery-Windows/releases)
+### - First download the app you can dowload latest version [here](https://github.com/XeniacDev/FoxholeArtillery-Windows/releases)
 - Then open the software
 ![Foxhole Artillery pic](http://s4.picofile.com/file/8363465576/Software_pic.PNG)
 
@@ -36,5 +36,5 @@ You must change the game settings.
 
 
 ***
-### if you find a bug, please report it from [here](https://github.com/irxeniac/FoxholeArtillery-Windows/issues)
-### Download the app from [here](https://irxeniac.github.io/FoxholeArtillery-Windows/)
+### if you find a bug, please report it from [here](https://github.com/XeniacDev/FoxholeArtillery-Windows/issues)
+### Download the app from [here](https://xeniacdev.github.io/FoxholeArtillery-Windows/)
