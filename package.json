@@ -14,7 +14,7 @@
   "author": "Mahdi fakhr",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^5.0.2",
+    "electron": "^18.3.7",
     "electron-builder": "^20.43.0",
     "electron-reload": "^1.5.0"
   },
